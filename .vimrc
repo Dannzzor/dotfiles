@@ -27,8 +27,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
-syntax on       " turn on syntax highlighting by default
-
 " Settings ====================================
 set autoindent " Copy indent from last line when starting new line
 set backspace=indent,eol,start
@@ -104,13 +102,12 @@ let mapleader = ","
 
 
 " Config ====================================
-" Local directories {{{
+" Local directories
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 set undodir=~/.vim/undo
-" }}}
 
-" FastEscape {{{
+" FastEscape 
 " Speed up transition from modes
 if ! has('gui_running')
   set ttimeoutlen=10
@@ -120,13 +117,11 @@ if ! has('gui_running')
     au InsertLeave * set timeoutlen=1000
   augroup END
 endif
-" }}}
 
-" Toggle show tabs and trailing spaces (,c) {{{
-set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
+" Toggle show tabs and trailing spaces (,c) 
+set lcs=tab:»·,trail:·,eol:¬,nbsp:_,extends:>,precedes:<
 set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
-" }}}}}
 
 noremap <Leader>. :Ag<Space>
 
@@ -139,10 +134,11 @@ let g:ctrlp_custom_ignore = {
       \ 'dir': '\v[\/](.git|.svn|vendor|node_modules)'
       \ }
 
-
+" Change shape of cursor in different modes
+let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical line in insert mode
+let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 
 " move between buffers in a window
-
 map <leader>m :bnext<CR>
 map <leader>n :bprevious<CR>
 
@@ -177,44 +173,10 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-
-"let g:acp_enableAtStartup = 0                        " disable default auto complete pop
-"let g:neocomplete#enable_at_startup = 1              " enable neocomplete
-"let g:neocomplete#enable_smart_case = 1              " Use smartcase.
-"let g:neocomplete#sources#syntax#min_keyword_length = 3
-"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-"let g:neocomplete#sources#dictionary#dictionaries = {
-"      \ 'default' : '',
-"      \ 'vimshell' : $HOME.'/.vimshell_hist',
-"      \ 'scheme' : $HOME.'/.gosh_completions'
-"      \ }
-
-
-" Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-"inoremap <expr><C-g>     neocomplete#undo_completion()
-"inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function()
-"  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-"endfunction
-" <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-"inoremap <expr><C-y>  neocomplete#close_popup()
-"inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -227,10 +189,9 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^.\t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:]*\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp= '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-"let g:neocomplete#sources#omni#input_patterns.perl= '\h\w*->\h\w*\|\h\w*::'
+let NERDTreeShowHidden=1
+
+set runtimepath+=~/.vim/bundle/jshint2.vim/
+
+syntax on
