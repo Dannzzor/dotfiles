@@ -25,8 +25,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
-
-
 " Settings ====================================
 set autoindent " Copy indent from last line when starting new line
 set backspace=indent,eol,start
@@ -102,13 +100,12 @@ let mapleader = ","
 
 
 " Config ====================================
-" Local directories {{{
+" Local directories
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 set undodir=~/.vim/undo
-" }}}
 
-" FastEscape {{{
+" FastEscape 
 " Speed up transition from modes
 if ! has('gui_running')
   set ttimeoutlen=10
@@ -118,13 +115,11 @@ if ! has('gui_running')
     au InsertLeave * set timeoutlen=1000
   augroup END
 endif
-" }}}
 
-" Toggle show tabs and trailing spaces (,c) {{{
-set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
+" Toggle show tabs and trailing spaces (,c) 
+set lcs=tab:»·,trail:·,eol:¬,nbsp:_,extends:>,precedes:<
 set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
-" }}}}}
 
 noremap <Leader>. :Ag<Space>
 
@@ -137,10 +132,11 @@ let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](.git|.svn|vendor|node_modules)'
   \ }
 
-
+" Change shape of cursor in different modes
+let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical line in insert mode
+let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 
 " move between buffers in a window
-
 map <leader>m :bnext<CR>
 map <leader>n :bprevious<CR>
 
@@ -172,3 +168,8 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+let NERDTreeShowHidden=1
+
+set runtimepath+=~/.vim/bundle/jshint2.vim/
+
+syntax on
