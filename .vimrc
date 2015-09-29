@@ -135,8 +135,14 @@ let g:ctrlp_custom_ignore = {
       \ }
 
 " Change shape of cursor in different modes
+" OSX ---
 let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical line in insert mode
 let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+" tmux on OSX ---
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
 
 " move between buffers in a window
 map <leader>m :bnext<CR>
