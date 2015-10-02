@@ -123,7 +123,11 @@ set lcs=tab:»·,trail:·,eol:¬,nbsp:_,extends:>,precedes:<
 set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
 
+" comma period opens silver searcher
 noremap <Leader>. :Ag<Space>
+
+" period period runs JSHint
+noremap <Leader>j :JSHint<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 
