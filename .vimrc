@@ -20,8 +20,11 @@ Plugin 'tpope/vim-fugitive.git'
 Plugin 'bling/vim-airline.git'
 Plugin 'rking/ag.vim'
 Plugin 'airblade/vim-gitgutter'
-"Plugin 'Shougo/neocomplete.vim'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'mattn/emmet-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
