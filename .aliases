@@ -137,3 +137,6 @@ alias reload="exec $SHELL -l"
 alias t="tsuru"
 alias t-info="tsuru app-info -a"
 alias t-list="tsuru app-list"
+
+# Kubernetics stuff
+alias k="kubectl"

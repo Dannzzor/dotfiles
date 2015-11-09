@@ -9,7 +9,7 @@ Plugin 'gmarik/Vundle.vim'
 " Plugins ===================================
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'kien/ctrlp.vim.git'
-Plugin 'tpope/vim-endwise.git'
+Plugin 'cohama/lexima.vim.git'
 Plugin 'ervandew/supertab.git'
 Plugin 'Raimondi/delimitMate.git'
 Plugin 'fatih/vim-go.git'
@@ -25,79 +25,88 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'mattn/emmet-vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'godlygeek/tabular'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'cocopon/iceberg.vim'
+Plugin 'tomasr/molokai'
+Plugin 'sickill/vim-monokai'
+Plugin 'chip/vim-fat-finger.git'
+Plugin 'altercation/vim-colors-solarized.git'
+
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 
 " Settings ====================================
-set autoindent " Copy indent from last line when starting new line
+set autoindent                           " Copy indent from last line when starting new line
 set backspace=indent,eol,start
-"set colorcolumn=80 " 80 width guideline
-set cursorline cursorcolumn " Highlight current line, and column
-set diffopt=filler " Add vertical spaces to keep right and left aligned
-set diffopt+=iwhite " Ignore whitespace changes (focus on code changes only)
+set colorcolumn=120                      " 120 width guideline
+set cursorline cursorcolumn              " Highlight current line, and column
+set diffopt=filler                       " Add vertical spaces to keep right and left aligned
+set diffopt+=iwhite                      " Ignore whitespace changes (focus on code changes only)
 set encoding=utf-8 nobomb
-set expandtab " Expand tabs to spaces
-set foldcolumn=0 " Column to show folds
-set foldenable " Enable folding
-set foldlevel=0 " Close all folds by default
-set foldmethod=syntax " Syntax are used to specify folds
-set foldminlines=0 " Allow folding single lines
-set foldnestmax=5 " Cap folding nesting level
+set expandtab                            " Expand tabs to spaces
+set foldcolumn=0                         " Column to show folds
+set foldenable                           " Enable folding
+set foldlevel=0                          " Close all folds by default
+set foldmethod=syntax                    " Syntax are used to specify folds
+set foldminlines=0                       " Allow folding single lines
+set foldnestmax=5                        " Cap folding nesting level
 set formatoptions=
-set formatoptions+=c " Format comments
-set formatoptions+=r " Continue comments by default
-set formatoptions+=o " Make comment when using o or O from comment line
-set formatoptions+=q " Format comments with gq
-set formatoptions+=n " Recognize numbered lists
-set formatoptions+=2 " Use indent from 2nd line of a paragraph
-set formatoptions+=1 " Don't break lines that are already long
-set formatoptions+=1 " Break before 1-letter words
-set gdefault " By default add g flag to search/replace. Add g to toggle
-set hidden " When a buffer is brought to foreground, remember undo history and marks
-set history=1000 " Increase history from 20 default to 1000
-set hlsearch " Highlight searches
-set ignorecase " Ignore case of searches
-set incsearch " Highlight dynamically as pattern is typed
-set laststatus=2 "Always show status line
-set lazyredraw " Don't redraw when we don't have to
-set magic " Enable extended regexes
-set mouse+=a " Enable mouse in all modes
-set nojoinspaces " Only insert single space after a '.', '?', and '!' witha join command
-set nostartofline " Don't reset the cursor to the start of the line when moving around
-set noswapfile " Do not use swap files
-set nowrap " Do not wrap lines
-set number " Enable line numbers
-set ofu=syntaxcomplete#Complete " Set omni-completion method
-set report=0 " Show all changes
-set ruler " Enable coordinates in bottom right
-set scrolloff=3 " Start scrolling 3 lines from window border
-set shiftwidth=2 " Indintation
-set smartcase " Ignore ignorecase if search contains uppercase
-set smarttab " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
-set softtabstop=2 " Tab key results in 2 spaces
-set splitbelow " New window goes below
-set splitright " New windows goes right
-set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
-set switchbuf=""
-set tabstop=2 " Hitting <Tab> will produce 2 spaces
-set title " Show the filename in the window titlebar
-set ttyfast " Send more characters at a given time
-set ttymouse=xterm " Set mouse type to xterm
-set undofile " Persistent Undo
+set formatoptions+=c                     " Format comments
+set formatoptions+=r                     " Continue comments by default
+set formatoptions+=o                     " Make comment when using o or O from comment line
+set formatoptions+=q                     " Format comments with gq
+set formatoptions+=n                     " Recognize numbered lists
+set formatoptions+=2                     " Use indent from 2nd line of a paragraph
+set formatoptions+=1                     " Don't break lines that are already long
+set formatoptions+=1                     " Break before 1-letter words
+set gdefault                             " By default add g flag to search/replace. Add g to toggle
+set hidden                               " When a buffer is brought to foreground, remember undo history and marks
+set history=1000                         " Increase history from 20 default to 1000
+set hlsearch                             " Highlight searches
+set ignorecase                           " Ignore case of searches
+set incsearch                            " Highlight dynamically as pattern is typed
+set laststatus=2                         " Always show status line
+set lazyredraw                           " Don't redraw when we don't have to
+set magic                                " Enable extended regexes
+set mouse+=a                             " Enable mouse in all modes
+set nojoinspaces                         " Only insert single space after a '.', '?', and '!' witha join command
+set nostartofline                        " Don't reset the cursor to the start of the line when moving around
+set noswapfile                           " Do not use swap files
+set nowrap                               " Do not wrap lines
+set number                               " Enable line numbers
+set ofu=syntaxcomplete#Complete          " Set omni-completion method
+set report=0                             " Show all changes
+set ruler                                " Enable coordinates in bottom right
+set scrolloff=5                          " Start scrolling 5 lines from window border
+set smartcase                            " Ignore ignorecase if search contains uppercase
+set smarttab                             " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
+set softtabstop=2                        " Tab key results in 2 spaces
+set shiftwidth=2                         " Indintation
+set splitbelow                           " New window goes below
+set splitright                           " New windows goes right
+set tabstop=2                            " Hitting <Tab> will produce 2 spaces
+set title                                " Show the filename in the window titlebar
+set ttyfast                              " Send more characters at a given time
+set ttymouse=xterm                       " Set mouse type to xterm
+set undofile                             " Persistent Undo
 set viminfo=%,'9999,s512,n~/.vim/viminfo " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered
-set visualbell " Use visual bell instead of audible bell (annnnnoying)
-set wildchar=<TAB> " Character for CLI expansion (TAB-completion)
-set wildignore+=.DS_Store
-set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
-set wildignore+=*/bower_components/*,*/node_modules/*
-set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
-set wildmenu " Hitting TAB in command mode will show possible completions above command line
-set wildmode=list:longest " Complete only until point of ambiguity
-set winminheight=0 " Allow splits to be reduced to a single line
-set wrapscan " Searches wrap around end of file
+set visualbell                           " Use visual bell instead of audible bell (annnnnoying)
+set wildchar=<TAB>                       " Character for CLI expansion (TAB-completion)
+set wildmenu                             " Hitting TAB in command mode will show possible completions above command line
+set wildmode=list:longest                " Complete only until point of ambiguity
+set winminheight=0                       " Allow splits to be reduced to a single line
+set wrapscan                             " Searches wrap around end of file
 
+set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
+
+set wildignore+=.DS_Store,*/bower_components/*,*/node_modules/*
+set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
+set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
 
 colorscheme atom
 
@@ -132,7 +141,7 @@ noremap <Leader>. :Ag<Space>
 " period period runs JSHint
 noremap <Leader>j :JSHint<CR>
 
-map <C-n> :NERDTreeToggle<CR>
+map <Leader>/ :NERDTreeToggle<CR>
 
 " CTRL-P
 let g:ctrlp_map = '<leader>,'
