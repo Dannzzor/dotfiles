@@ -33,6 +33,8 @@ Plugin 'tomasr/molokai'
 Plugin 'sickill/vim-monokai'
 Plugin 'chip/vim-fat-finger.git'
 Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'mxw/vim-jsx'
+
 
 
 
@@ -108,7 +110,6 @@ set wildignore+=.DS_Store,*/bower_components/*,*/node_modules/*
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
 
-colorscheme atom
 
 let mapleader = ","
 
@@ -134,6 +135,9 @@ endif
 set lcs=tab:»·,trail:·,eol:¬,nbsp:_,extends:>,precedes:<
 set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
+
+"Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " comma period opens silver searcher
 noremap <Leader>. :Ag<Space>
@@ -194,7 +198,8 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-let g:airline_theme='behelit'
+colorscheme dannzzor
+let g:airline_theme='dannzzor'
 
 
 noremap <Up> <NOP>
