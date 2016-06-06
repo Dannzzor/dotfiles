@@ -12,6 +12,9 @@ alias g="git"
 alias h="history"
 alias j="jobs"
 alias dc="docker-compose"
+alias dm="docker-machine"
+#alias dmeval="eval $(docker-machine env default)"
+alias ci="code-insiders"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

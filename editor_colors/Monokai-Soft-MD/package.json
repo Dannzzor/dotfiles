@@ -1,0 +1,22 @@
+{
+    "name": "Monokai-Soft-MD",
+    "displayName": "Monokai-Soft-MD",
+    "description": "Monokai soft",
+    "version": "0.0.1",
+    "publisher": "dannzzor",
+    "engines": {
+        "vscode": "^0.10.10"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Monokai Soft MD",
+                "uiTheme": "vs-dark",
+                "path": "./themes/Monokai-Soft-MD.tmTheme"
+            }
+        ]
+    }
+}
