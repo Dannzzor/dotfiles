@@ -34,7 +34,7 @@ Plugin 'sickill/vim-monokai'
 Plugin 'chip/vim-fat-finger.git'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'mxw/vim-jsx'
-
+Plugin 'digitaltoad/vim-pug'
 
 
 

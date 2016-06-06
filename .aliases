@@ -13,10 +13,13 @@ alias rm='rm -i -v'
 alias cp='cp -v'
 
 # Shortcuts
-alias g='git'
-alias h='history'
-alias j='jobs'
-alias dc='docker-compose'
+alias g="git"
+alias h="history"
+alias j="jobs"
+alias dc="docker-compose"
+alias dm="docker-machine"
+#alias dmeval="eval $(docker-machine env default)"
+alias ci="code-insiders"
 alias cask='brew cask'
 
 # first install silver searcher: brew install the_silver_searcher
