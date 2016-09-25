@@ -69,6 +69,8 @@ export NVM_DIR="$HOME/.nvm"
 # http://stackoverflow.com/questions/13804382/how-to-automatically-run-bin-bash-login-automatically-in-the-embeded-termin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# Point our gems to the ~/.gems folder
+export GEM_HOME=~/.gems
 
 
 # init z   https://github.com/rupa/z
@@ -131,3 +133,11 @@ shopt -s nocaseglob;
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
+
+# Added by the canvas-lms setup script
+# These settings make chruby work
+# See https://github.com/postmodern/chruby
+[ -f /usr/local/share/chruby/chruby.sh ] && . /usr/local/share/chruby/chruby.sh
+[ -f /usr/local/share/chruby/auto.sh ] && . /usr/local/share/chruby/auto.sh
+[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ] && . /usr/local/opt/chruby/share/chruby/chruby.sh
+[ -f /usr/local/opt/chruby/share/chruby/auto.sh ] && . /usr/local/opt/chruby/share/chruby/auto.sh

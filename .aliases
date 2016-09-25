@@ -1,5 +1,9 @@
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias cd..="cd .."
+alias cd...="cd ../.."
+alias cd....="cd ../../.."
+alias cd.....="cd ../../../.."
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -9,7 +13,7 @@ alias -- -="cd -"
 
 # mv, rm, cp
 alias mv='mv -v'
-alias rm='rm -i -v'
+#alias rm='rm -i -v'
 alias cp='cp -v'
 
 # Shortcuts
@@ -146,3 +150,6 @@ alias t-list="tsuru app-list"
 
 # Kubernetics stuff
 alias k="kubectl"
+
+
+alias dchelp="echo dc down -v to stop all dc containers"

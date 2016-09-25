@@ -31,27 +31,12 @@ cdf() {  # short for cdfinder
 
 
 
-# git commit browser. needs fzf
-log() {
-  git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` \
-      --bind "ctrl-m:execute:
-                echo '{}' | grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R'"
-}
 
-
-
-# Start an HTTP server from a directory, optionally specifying the port
+# Start an HTTP server from a directory
 function server() {
-	local port="${1:-8000}"
-	open "http://localhost:${port}/" &
-	# statik is good because it won't expose hidden folders/files by default.
-	# npm install -g statik
-	statik --port "$port" .
+  echo "starting server at localhost:8080"
+  python -m SimpleHTTPServer 8080
 }
-
 
 # Copy w/ progress
 cp_p () {
