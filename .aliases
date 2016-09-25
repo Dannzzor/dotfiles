@@ -18,6 +18,7 @@ alias h='history'
 alias j='jobs'
 alias dc='docker-compose'
 alias cask='brew cask'
+alias ci='code-insiders'
 
 # first install silver searcher: brew install the_silver_searcher
 # this just defaults it to follow symlinks and also search hidden files
