@@ -164,3 +164,10 @@ function nullify() {
 # shellswitch () {
 # 	chsh -s $(brew --prefix)/bin/$1
 # }
+
+# Docker functions ===================
+
+# Remove all stopped docker containers
+function dcrms() {
+  docker rm -v $(docker ps -a -q -f status=exited)
+}
