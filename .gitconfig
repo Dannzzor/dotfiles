@@ -69,6 +69,8 @@
         fi \
     }; f"
 
+    sub = "submodule update --recursive --init"
+
 [apply]
 
     # Detect whitespace errors when applying a patch

@@ -2,6 +2,9 @@
 
 # add more, ideas here: https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions
 
+# set bash to vim keys
+set -o vi
+
 # Load our dotfiles like ~/.bash_prompt, etc…
 #   ~/.extra can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
