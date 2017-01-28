@@ -1,4 +1,4 @@
-set nocompatible " Required
+set nocompatible " Tell vim not to pretend to be oldschool VI
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -37,12 +37,12 @@ Plugin 'mxw/vim-jsx'
 
 
 
-
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 
 " Settings ====================================
+set path+=**                             " Set path search recursive
 set autoindent                           " Copy indent from last line when starting new line
 set backspace=indent,eol,start
 set colorcolumn=120                      " 120 width guideline
@@ -120,6 +120,8 @@ set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 set undodir=~/.vim/undo
 
+command! MakeTags !ctags -R --exclude=.git --exclude=log --exclude=node_modules .
+
 " FastEscape 
 " Speed up transition from modes
 if ! has('gui_running')
@@ -142,7 +144,7 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " comma period opens silver searcher
 noremap <Leader>. :Ag<Space>
 
-" period period runs JSHint
+" comma j runs JSHint
 noremap <Leader>j :JSHint<CR>
 
 map <Leader>/ :NERDTreeToggle<CR>
@@ -198,7 +200,11 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-colorscheme dannzzor
+colorscheme one
+set background=dark
+"let g:airline_theme='one'
+"let g:one_allow_italics=1
+"colorscheme dannzzor
 let g:airline_theme='dannzzor'
 
 
@@ -207,10 +213,10 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"   if !exists('g:neocomplete#keyword_patterns')
+"     let g:neocomplete#keyword_patterns = {}
+"   endif
+"   let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -225,15 +231,19 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 
 "Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets' behavior.
-imap <TAB> <C-y>,
+" imap <TAB> <C-y>,
 
+" nerdtree shows hidden files
 let NERDTreeShowHidden=1
 
-set runtimepath+=~/.vim/bundle/jshint2.vim/
+" close vim if nerdtree is only open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-syntax on
+" set runtimepath+=~/.vim/bundle/jshint2.vim/
+
+syntax enable
