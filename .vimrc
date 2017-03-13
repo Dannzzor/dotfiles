@@ -34,7 +34,7 @@ Plugin 'sickill/vim-monokai'
 Plugin 'chip/vim-fat-finger.git'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'mxw/vim-jsx'
-
+Plugin 'digitaltoad/vim-pug'
 
 
 call vundle#end()            " required
@@ -43,6 +43,7 @@ filetype plugin indent on    " required
 
 " Settings ====================================
 set path+=**                             " Set path search recursive
+set shortmess=a                          " Use shorter messages to avoid the click enter to continue warning
 set autoindent                           " Copy indent from last line when starting new line
 set backspace=indent,eol,start
 set colorcolumn=120                      " 120 width guideline
@@ -148,6 +149,8 @@ noremap <Leader>. :Ag<Space>
 noremap <Leader>j :JSHint<CR>
 
 map <Leader>/ :NERDTreeToggle<CR>
+"map <Leader>/ :Vexplore<CR>
+"map <leader>/ :call VexToggle(getcwd())<CR>
 
 " CTRL-P
 let g:ctrlp_map = '<leader>,'
@@ -200,11 +203,11 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-colorscheme one
-set background=dark
+"set background=dark
 "let g:airline_theme='one'
 "let g:one_allow_italics=1
 "colorscheme dannzzor
+colorscheme onedark
 let g:airline_theme='dannzzor'
 
 
@@ -247,3 +250,61 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " set runtimepath+=~/.vim/bundle/jshint2.vim/
 
 syntax enable
+syntax on
+" ----------------------------------------------------
+" lets try to replace NerdTree with the builtin netrw!
+" ----------------------------------------------------
+fun! NormalizeWidths()
+  let eadir_pref = &eadirection
+  set eadirection=hor
+  set equalalways! equalalways!
+  let &eadirection = eadir_pref
+endfun
+
+fun! VexSize(vex_width)
+  execute "vertical resize" . a:vex_width
+  set winfixwidth
+  call NormalizeWidths()
+endfun
+
+fun! VexOpen(dir)
+  let g:netrw_browse_split=4   " open files in previous window
+  let vex_width=25
+  execute "Vexplore " . a:dir
+  let t:vex_buf_nr = bufnr("%")
+  wincmd H
+
+  call VexSize(vex_width)
+endfun
+
+fun! VexClose()
+  let cur_win_nr = winnr()
+  let target_nr = ( cur_win_nr == 1 ? winnr("#") : cur_win_nr )
+
+  1wincmd w
+  close
+  unlet t:vex_buf_nr
+
+  execute (target_nr -1) . "wincmd w"
+  call NormalizeWidths()
+endfun
+
+fun! VexToggle(dir)
+  if exists("t:vex_buf_nr")
+    call VexClose()
+  else
+    call VexOpen(a:dir)
+  endif
+endfun
+
+augroup NetrwGroup
+  autocmd! BufEnter * call NormalizeWidths()
+augroup END
+
+let g:netrw_liststyle=0              " thin (change to 3 for tree view)
+let g:netrw_banner=0                 " no banner
+let g:netrw_altv=1                   " open new files on the right
+let g:netrw_preview=1                " open previews vertically
+" ----------------------------------------------------
+
+

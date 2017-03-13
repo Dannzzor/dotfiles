@@ -72,6 +72,8 @@
         fi \
     }; f"
 
+    sub = "submodule update --recursive --init"
+
 [apply]
 
     # Detect whitespace errors when applying a patch
@@ -80,7 +82,7 @@
 [core]
 
     # Use custom `.gitignore` and `.gitattributes`
-	excludesfile = /Users/danny/.gitignore
+    excludesfile = /Users/danny/.gitignore
     attributesfile = ~/.gitattributes
 
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -166,7 +168,7 @@
     insteadOf = "gist:"
 [user]
 	name = Danny Davenport
-	email = danny@firma8.com
+	email = danny.davenport@k3integrations.com
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -174,3 +176,5 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
+[gitopen "gitlab"]
+	domain = hub.k3integrations.com

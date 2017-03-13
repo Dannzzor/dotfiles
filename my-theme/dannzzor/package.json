@@ -1,0 +1,22 @@
+{
+    "name": "dannzzor",
+    "displayName": "my-theme",
+    "description": "theme i swiped from interwebs",
+    "version": "0.0.1",
+    "publisher": "dannzzor",
+    "engines": {
+        "vscode": "^0.10.10"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Dannzzor",
+                "uiTheme": "vs-dark",
+                "path": "./themes/my-theme.tmTheme"
+            }
+        ]
+    }
+}

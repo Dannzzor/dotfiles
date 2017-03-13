@@ -2,6 +2,9 @@
 
 # add more, ideas here: https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions
 
+# set bash to vim keys
+set -o vi
+
 # Load our dotfiles like ~/.bash_prompt, etc…
 #   ~/.extra can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
@@ -69,6 +72,8 @@ export NVM_DIR="$HOME/.nvm"
 # http://stackoverflow.com/questions/13804382/how-to-automatically-run-bin-bash-login-automatically-in-the-embeded-termin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# Point our gems to the ~/.gems folder
+export GEM_HOME=~/.gems
 
 
 # init z   https://github.com/rupa/z
@@ -131,7 +136,6 @@ shopt -s nocaseglob;
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
-
 
 
 # colors
