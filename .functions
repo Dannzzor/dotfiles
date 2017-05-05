@@ -5,6 +5,11 @@ function md() {
 	mkdir -p "$@" && cd "$@"
 }
 
+# Remove all exited docker containers
+function docker_clean() {
+  docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm
+}
+
 
 # find shorthand
 function f() {

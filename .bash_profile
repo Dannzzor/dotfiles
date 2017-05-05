@@ -137,6 +137,8 @@ shopt -s nocaseglob;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
+eval $(docker-machine env default);
+
 # Added by the canvas-lms setup script
 # These settings make chruby work
 # See https://github.com/postmodern/chruby
