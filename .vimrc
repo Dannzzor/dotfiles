@@ -146,9 +146,9 @@ noremap <Leader>. :Ag<Space>
 " period period runs JSHint
 noremap <Leader>j :JSHint<CR>
 
-map <Leader>/ :NERDTreeToggle<CR>
+"map <Leader>/ :NERDTreeToggle<CR>
 "map <Leader>/ :Vexplore<CR>
-"map <leader>/ :call VexToggle(getcwd())<CR>
+map <leader>/ :call VexToggle(getcwd())<CR>
 
 " CTRL-P
 let g:ctrlp_map = '<leader>,'
