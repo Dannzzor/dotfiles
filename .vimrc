@@ -52,12 +52,12 @@ set diffopt=filler                       " Add vertical spaces to keep right and
 set diffopt+=iwhite                      " Ignore whitespace changes (focus on code changes only)
 set encoding=utf-8 nobomb
 set expandtab                            " Expand tabs to spaces
-set foldcolumn=0                         " Column to show folds
-set foldenable                           " Enable folding
-set foldlevel=0                          " Close all folds by default
-set foldmethod=syntax                    " Syntax are used to specify folds
-set foldminlines=0                       " Allow folding single lines
-set foldnestmax=5                        " Cap folding nesting level
+"set foldcolumn=0                         " Column to show folds
+"set foldenable                           " Enable folding
+"set foldlevel=0                          " Close all folds by default
+"set foldmethod=syntax                    " Syntax are used to specify folds
+"set foldminlines=0                       " Allow folding single lines
+"set foldnestmax=5                        " Cap folding nesting level
 set formatoptions=
 set formatoptions+=c                     " Format comments
 set formatoptions+=r                     " Continue comments by default
