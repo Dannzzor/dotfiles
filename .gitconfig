@@ -1,7 +1,16 @@
 [alias]
 
+    # Add all changes, interactively
+    a = add -p
+
+    # View appreviated SHA, description, commits from all branches, and cool ascii graph
+    l = log --oneline --decorate --all --graph
+
     # View abbreviated SHA, description, and history graph of the latest 20 commits
-    l = log --pretty=oneline -n 20 --graph --abbrev-commit
+    #ll = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    # View log with more details, names and timestamps and stuff.
+    ll = log --color --pretty=format:'%C(auto)%h %Cred %<(10,trunc)%an %Creset%C(auto)%s %Cgreen(%cr,%ar) %Creset%C(auto)%d'
 
     # View the current working tree status using the short format
     s = status -s
@@ -20,6 +29,9 @@
 
     # Commit all changes
     ca = !git add -A && git commit -av
+
+    # Update all submodules
+    sub = submodule update --init --recursive
 
     # Switch to a branch, creating it if necessary
     go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
@@ -69,6 +81,7 @@
         fi \
     }; f"
 
+    # Update all submodules
     sub = "submodule update --recursive --init"
 
 [apply]

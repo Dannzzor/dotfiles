@@ -23,11 +23,10 @@ alias j="jobs"
 alias d="docker"
 alias dc="docker-compose"
 alias dm="docker-machine"
-#alias dm="docker-machine"
 #alias dmeval="eval $(docker-machine env default)"
-alias ci="code-insiders"
 alias cask='brew cask'
 alias ci='code-insiders'
+alias ctags="`brew --prefix`/bin/ctags"
 
 # first install silver searcher: brew install the_silver_searcher
 # this just defaults it to follow symlinks and also search hidden files

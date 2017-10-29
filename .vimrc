@@ -1,4 +1,4 @@
-set nocompatible " Required
+set nocompatible " Tell vim not to pretend to be oldschool VI
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -37,13 +37,13 @@ Plugin 'mxw/vim-jsx'
 Plugin 'digitaltoad/vim-pug'
 
 
-
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 
 " Settings ====================================
 set shortmess=a                          " Use shorter messages to avoid the click enter to continue warning
+set path+=**                             " Set path search recursive
 set autoindent                           " Copy indent from last line when starting new line
 set backspace=indent,eol,start
 set colorcolumn=120                      " 120 width guideline
@@ -52,12 +52,12 @@ set diffopt=filler                       " Add vertical spaces to keep right and
 set diffopt+=iwhite                      " Ignore whitespace changes (focus on code changes only)
 set encoding=utf-8 nobomb
 set expandtab                            " Expand tabs to spaces
-set foldcolumn=0                         " Column to show folds
-set foldenable                           " Enable folding
-set foldlevel=0                          " Close all folds by default
-set foldmethod=syntax                    " Syntax are used to specify folds
-set foldminlines=0                       " Allow folding single lines
-set foldnestmax=5                        " Cap folding nesting level
+"set foldcolumn=0                         " Column to show folds
+"set foldenable                           " Enable folding
+"set foldlevel=0                          " Close all folds by default
+"set foldmethod=syntax                    " Syntax are used to specify folds
+"set foldminlines=0                       " Allow folding single lines
+"set foldnestmax=5                        " Cap folding nesting level
 set formatoptions=
 set formatoptions+=c                     " Format comments
 set formatoptions+=r                     " Continue comments by default
@@ -121,6 +121,8 @@ set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 set undodir=~/.vim/undo
 
+command! MakeTags !ctags -R --exclude=.git --exclude=log --exclude=node_modules .
+
 " FastEscape 
 " Speed up transition from modes
 if ! has('gui_running')
@@ -143,7 +145,7 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " comma period opens silver searcher
 noremap <Leader>. :Ag<Space>
 
-" period period runs JSHint
+" comma j runs JSHint
 noremap <Leader>j :JSHint<CR>
 
 map <Leader>/ :NERDTreeToggle<CR>
@@ -202,6 +204,11 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 colorscheme onedark
+set background=dark "<< not sure if this is needed now.... must investigate"
+
+"let g:airline_theme='one'
+"let g:one_allow_italics=1
+"colorscheme dannzzor
 let g:airline_theme='dannzzor'
 
 
@@ -210,10 +217,10 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"   if !exists('g:neocomplete#keyword_patterns')
+"     let g:neocomplete#keyword_patterns = {}
+"   endif
+"   let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -228,81 +235,19 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 
 "Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets' behavior.
-imap <TAB> <C-y>,
+" imap <TAB> <C-y>,
 
+" nerdtree shows hidden files
 let NERDTreeShowHidden=1
 
-set runtimepath+=~/.vim/bundle/jshint2.vim/
+" close vim if nerdtree is only open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" ----------------------------------------------------
-" lets try to replace NerdTree with the builtin netrw!
-" ----------------------------------------------------
-fun! NormalizeWidths()
-  let eadir_pref = &eadirection
-  set eadirection=hor
-  set equalalways! equalalways!
-  let &eadirection = eadir_pref
-endfun
+" set runtimepath+=~/.vim/bundle/jshint2.vim/
 
-fun! VexSize(vex_width)
-  execute "vertical resize" . a:vex_width
-  set winfixwidth
-  call NormalizeWidths()
-endfun
-
-fun! VexOpen(dir)
-  let g:netrw_browse_split=4   " open files in previous window
-  let vex_width=25
-  execute "Vexplore " . a:dir
-  let t:vex_buf_nr = bufnr("%")
-  wincmd H
-
-  call VexSize(vex_width)
-endfun
-
-fun! VexClose()
-  let cur_win_nr = winnr()
-  let target_nr = ( cur_win_nr == 1 ? winnr("#") : cur_win_nr )
-
-  1wincmd w
-  close
-  unlet t:vex_buf_nr
-
-  execute (target_nr -1) . "wincmd w"
-  call NormalizeWidths()
-endfun
-
-fun! VexToggle(dir)
-  if exists("t:vex_buf_nr")
-    call VexClose()
-  else
-    call VexOpen(a:dir)
-  endif
-endfun
-
-augroup NetrwGroup
-  autocmd! BufEnter * call NormalizeWidths()
-augroup END
-
-let g:netrw_liststyle=0              " thin (change to 3 for tree view)
-let g:netrw_banner=0                 " no banner
-let g:netrw_altv=1                   " open new files on the right
-let g:netrw_preview=1                " open previews vertically
-" ----------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-syntax on
-
+syntax enable

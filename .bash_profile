@@ -137,6 +137,8 @@ shopt -s nocaseglob;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
+# Automatically set the env vars for the default docker container on shell load
+#eval $(docker-machine env default);
 
 # colors
 LS_COLORS=$LS_COLORS:'di=0;35:' ; export LS_COLORS
