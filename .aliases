@@ -23,6 +23,7 @@ alias j="jobs"
 alias d="docker"
 alias dc="docker-compose"
 alias dm="docker-machine"
+#alias dmeval="eval $(docker-machine env default)"
 alias cask='brew cask'
 alias ci='code-insiders'
 alias ctags="`brew --prefix`/bin/ctags"
