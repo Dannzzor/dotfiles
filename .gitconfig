@@ -178,7 +178,7 @@
     insteadOf = "gist:"
 [user]
 	name = Danny Davenport
-	email = danny.davenport@k3integrations.com
+	email = ddavenport420@gmail.com
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -187,4 +187,4 @@
 	trustExitCode = true
 
 [gitopen "gitlab"]
-	domain = hub.k3integrations.com
+	domain = hub.dannydavenport.com
