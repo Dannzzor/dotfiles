@@ -8,37 +8,36 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugins ===================================
 Plugin 'scrooloose/nerdtree.git'
+Plugin 'ajh17/VimCompletesMe'
 Plugin 'kien/ctrlp.vim.git'
-Plugin 'cohama/lexima.vim.git'
-Plugin 'ervandew/supertab.git'
-Plugin 'Raimondi/delimitMate.git'
-Plugin 'fatih/vim-go.git'
-Plugin 'kchmck/vim-coffee-script.git'
 Plugin 'moll/vim-bbye.git'
-Plugin 'rust-lang/rust.vim.git'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'bling/vim-airline.git'
 Plugin 'rking/ag.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'mattn/emmet-vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'godlygeek/tabular'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'cocopon/iceberg.vim'
-Plugin 'tomasr/molokai'
-Plugin 'sickill/vim-monokai'
 Plugin 'chip/vim-fat-finger.git'
-Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'mxw/vim-jsx'
-Plugin 'digitaltoad/vim-pug'
+Plugin 'othree/csscomplete.vim'
+Plugin 'mattn/emmet-vim'
 
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" plugin junkyard =============================
+"Plugin 'rstacruz/vim-hyperstyle'
+"Plugin 'rstacruz/vim-closer'
+"Plugin 'fatih/vim-go.git'
+"Plugin 'kchmck/vim-coffee-script.git'
+"Plugin 'rust-lang/rust.vim.git'
+"Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet-snippets'
+"Plugin 'ervandew/supertab.git'
+"Plugin 'digitaltoad/vim-pug'
 
 
 " Settings ====================================
@@ -81,7 +80,7 @@ set nojoinspaces                         " Only insert single space after a '.',
 set nostartofline                        " Don't reset the cursor to the start of the line when moving around
 set noswapfile                           " Do not use swap files
 set nowrap                               " Do not wrap lines
-set number                               " Enable line numbers
+set number relativenumber                " Enable relative line numbers
 set ofu=syntaxcomplete#Complete          " Set omni-completion method
 set report=0                             " Show all changes
 set ruler                                " Enable coordinates in bottom right
@@ -105,14 +104,22 @@ set wildmode=list:longest                " Complete only until point of ambiguit
 set winminheight=0                       " Allow splits to be reduced to a single line
 set wrapscan                             " Searches wrap around end of file
 
+
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
 
 set wildignore+=.DS_Store,*/bower_components/*,*/node_modules/*
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
 
-
 let mapleader = ","
+
+" auto toggle hybrid-relative line numbers when a buffer is focused
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 
 
 " Config ====================================
@@ -123,7 +130,7 @@ set undodir=~/.vim/undo
 
 command! MakeTags !ctags -R --exclude=.git --exclude=log --exclude=node_modules .
 
-" FastEscape 
+" FastEscape
 " Speed up transition from modes
 if ! has('gui_running')
   set ttimeoutlen=10
@@ -134,7 +141,7 @@ if ! has('gui_running')
   augroup END
 endif
 
-" Toggle show tabs and trailing spaces (,c) 
+" Toggle show tabs and trailing spaces (,c)
 set lcs=tab:»·,trail:·,eol:¬,nbsp:_,extends:>,precedes:<
 set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
@@ -146,11 +153,19 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 noremap <Leader>. :Ag<Space>
 
 " comma j runs JSHint
-noremap <Leader>j :JSHint<CR>
+"noremap <Leader>j :JSHint<CR>
+" set runtimepath+=~/.vim/bundle/jshint2.vim/
 
 map <Leader>/ :NERDTreeToggle<CR>
 "map <Leader>/ :Vexplore<CR>
 "map <leader>/ :call VexToggle(getcwd())<CR>
+
+" nerdtree shows hidden files
+let NERDTreeShowHidden=1
+
+" close vim if nerdtree is only open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 " CTRL-P
 let g:ctrlp_map = '<leader>,'
@@ -184,6 +199,7 @@ map <leader>n :bprevious<CR>
 map <leader>x :x<CR>
 
 " close current buffer without closing window
+" uses vim-bbye plugin
 noremap <leader>w :Bdelete<CR>
 
 " open new empty buffer in current window
@@ -204,11 +220,10 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 colorscheme onedark
-set background=dark "<< not sure if this is needed now.... must investigate"
-
-"let g:airline_theme='one'
-"let g:one_allow_italics=1
 "colorscheme dannzzor
+"set background=dark
+
+"let g:one_allow_italics=1
 let g:airline_theme='dannzzor'
 
 
@@ -225,25 +240,5 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-"Plugin key-mappings.
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets' behavior.
-" imap <TAB> <C-y>,
-
-" nerdtree shows hidden files
-let NERDTreeShowHidden=1
-
-" close vim if nerdtree is only open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" set runtimepath+=~/.vim/bundle/jshint2.vim/
 
 syntax enable
