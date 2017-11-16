@@ -17,6 +17,7 @@ alias mv='mv -v'
 alias cp='cp -v'
 
 # Shortcuts
+alias cra="create-react-app"
 alias g="git"
 alias h="history"
 alias j="jobs"

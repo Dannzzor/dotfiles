@@ -22,6 +22,7 @@ Plugin 'chip/vim-fat-finger.git'
 Plugin 'mxw/vim-jsx'
 Plugin 'othree/csscomplete.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'rstacruz/vim-closer'
 
 
 call vundle#end()            " required
@@ -29,7 +30,6 @@ filetype plugin indent on    " required
 
 " plugin junkyard =============================
 "Plugin 'rstacruz/vim-hyperstyle'
-"Plugin 'rstacruz/vim-closer'
 "Plugin 'fatih/vim-go.git'
 "Plugin 'kchmck/vim-coffee-script.git'
 "Plugin 'rust-lang/rust.vim.git'
@@ -232,6 +232,8 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" Remap Ctrl-x-f to use relative path instead of from PWD 
+inoremap ./<C-X><C-F> <C-O>:lcd %:p:h<CR><C-X><C-F>
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
