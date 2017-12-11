@@ -77,7 +77,7 @@ export GEM_HOME=~/.gems
 
 
 # init z   https://github.com/rupa/z
-. ~/bin/z/z.sh
+#. ~/bin/z/z.sh
 
 
 
