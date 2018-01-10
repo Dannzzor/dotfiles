@@ -77,7 +77,7 @@ export GEM_HOME=~/.gems
 
 
 # init z   https://github.com/rupa/z
-. ~/bin/z/z.sh
+#. ~/bin/z/z.sh
 
 
 
@@ -86,11 +86,9 @@ export GEM_HOME=~/.gems
 ##
 
 # bash completion.
-if  which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-    source "$(brew --prefix)/share/bash-completion/bash_completion";
-elif [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion;
-fi;
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
 
 # homebrew completion
 if  which brew > /dev/null; then
