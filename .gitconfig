@@ -66,6 +66,12 @@
   # a.k.a. ‘delete merged’
   dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
+  # Same as ^ 'git dm' but it is interactive!
+  dmi = "git branch --merged > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches"
+
+  # Remove local references to branches that have already been deleted off remote origin
+  dmm = "git remote prune origin"
+
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
 
@@ -81,9 +87,6 @@
       fi \
   }; f"
 
-  # Update all submodules
-  sub = "submodule update --recursive --init"
-
 [apply]
 
   # Detect whitespace errors when applying a patch
@@ -92,7 +95,7 @@
 [core]
 
   # Use custom `.gitignore` and `.gitattributes`
-  excludesfile = /Users/danny/.gitignore
+  excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
 
   # Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -186,8 +189,5 @@
 	name = Danny Davenport
 	email = ddavenport420@gmail.com
 
-[gitopen "gitlab"]
-
-	domain = hub.dannydavenport.com
 
 

@@ -23,6 +23,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'othree/csscomplete.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'rstacruz/vim-closer'
+Plugin 'leafgarland/typescript-vim'
 
 
 call vundle#end()            " required
