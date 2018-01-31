@@ -8,7 +8,6 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugins ===================================
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'ajh17/VimCompletesMe'
 Plugin 'kien/ctrlp.vim.git'
 Plugin 'moll/vim-bbye.git'
 Plugin 'tpope/vim-fugitive.git'
@@ -24,12 +23,17 @@ Plugin 'othree/csscomplete.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'rstacruz/vim-closer'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'w0rp/ale'
+Plugin 'Shougo/deoplete'
+Plugin 'steelsojka/deoplete-flow'
+Plugin 'mhartington/nvim-typescript'
 
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " plugin junkyard =============================
+"Plugin 'ajh17/VimCompletesMe'
 "Plugin 'rstacruz/vim-hyperstyle'
 "Plugin 'fatih/vim-go.git'
 "Plugin 'kchmck/vim-coffee-script.git'
@@ -95,15 +99,21 @@ set splitright                           " New windows goes right
 set tabstop=2                            " Hitting <Tab> will produce 2 spaces
 set title                                " Show the filename in the window titlebar
 set ttyfast                              " Send more characters at a given time
-set ttymouse=xterm                       " Set mouse type to xterm
 set undofile                             " Persistent Undo
-set viminfo=%,'9999,s512,n~/.vim/viminfo " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered
 set visualbell                           " Use visual bell instead of audible bell (annnnnoying)
 set wildchar=<TAB>                       " Character for CLI expansion (TAB-completion)
 set wildmenu                             " Hitting TAB in command mode will show possible completions above command line
 set wildmode=list:longest                " Complete only until point of ambiguity
 set winminheight=0                       " Allow splits to be reduced to a single line
 set wrapscan                             " Searches wrap around end of file
+
+if has('nvim')
+  " some neovim specific configs
+else
+  " some vim specific configs
+  set viminfo=%,'9999,s512,n~/.vim/viminfo " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered
+  set ttymouse=xterm                       " Set mouse type to xterm
+endif
 
 
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
@@ -226,6 +236,22 @@ colorscheme onedark
 
 "let g:one_allow_italics=1
 let g:airline_theme='dannzzor'
+let g:tmuxline_preset = {
+      \'a'    : '#(whoami)',
+      \'b'    : '#W',
+      \'c'    : '#(date)',
+      \'x'    : '#(tmux-mem-cpu-load --interval 2)',
+      \'y'    : 'up #(uptime | cut -d " " -f 1,2,3)',
+      \'z'    : 'DANNZZOR'}
+"let g:tmuxline_preset = {
+"      \'a'    : '#(whoami)',
+"      \'b'    : '#W',
+"      \'c'    : '#H',
+"      \'win'  : '#I #W',
+"      \'cwin' : '#I #W',
+"      \'x'    : '#(tmux-mem-cpu-load --interval 2)',
+"      \'y'    : '%a %R',
+"      \'z'    : '#(ip)'}
 
 
 noremap <Up> <NOP>
@@ -245,3 +271,29 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
 syntax enable
+
+" Prettier Config
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#trailing_comma = 'none'
+
+" ALE configuration
+let g:ale_fixers = {
+\ 'javascript': ['eslint'],
+\ 'typescript': ['tslint', 'prettier']
+\}
+
+let g:ale_completion_enabled = 1
+let g:ale_echo_msg_warning_str = '△'
+let g:ale_echo_msg_error_str = '⨯'
+let g:ale_echo_msg_format = '[%severity% %linter%] %s' 
+let g:ale_linters = {
+\ 'javascript': ['flow', 'jshint'],
+\ 'typescript': ['flow', 'tslint']
+\}
+
+" ALE fix on save
+let g:ale_fix_on_save = 1
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
