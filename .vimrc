@@ -237,7 +237,7 @@ colorscheme onedark
 "let g:one_allow_italics=1
 let g:airline_theme='dannzzor'
 let g:tmuxline_preset = {
-      \'a'    : '#(whoami)',
+      \'a'    : '#S',
       \'b'    : '#W',
       \'c'    : '#(date)',
       \'x'    : '#(tmux-mem-cpu-load --interval 2)',
