@@ -17,6 +17,8 @@ alias mv='mv -v'
 alias cp='cp -v'
 
 # Shortcuts
+alias vim="nvim"
+alias vimdiff="nvim -d"
 alias cls="clear"
 alias cra="create-react-app"
 alias g="git"
@@ -157,6 +159,8 @@ alias t-list="tsuru app-list"
 alias k="kubectl"
 
 
+# docker delete dangling images
+alias ddm="docker rmi $(docker images --quiet --filter 'dangling=true')"
 alias dchelp="echo dc down -v to stop all dc containers"
 
 alias portforward="echo 'rdr pass inet proto tcp from any to any port 80 -> 8080' | sudo pfctl -ef -"
