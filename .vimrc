@@ -24,9 +24,12 @@ Plugin 'mattn/emmet-vim'
 Plugin 'rstacruz/vim-closer'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'w0rp/ale'
-Plugin 'Shougo/deoplete'
 Plugin 'steelsojka/deoplete-flow'
 Plugin 'mhartington/nvim-typescript'
+Plugin 'mhartington/oceanic-next'
+if has('nvim') 
+  Plugin 'Shougo/deoplete.nvim'
+endif
 
 
 call vundle#end()            " required
@@ -230,18 +233,35 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-colorscheme onedark
+" Theme stuff =============================
+" install themes in .vim/colors
+syntax enable
+" Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
+" if terminal supports it, turn on bold
+let g:oceanic_next_terminal_bold = 1
+" if terminal supports it, turn on italics
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
+
+"colorscheme onedark
+"let g:one_allow_italics=1
+
 "colorscheme dannzzor
 "set background=dark
+" set a transparent background manually
+hi Normal guibg=NONE ctermbg=NONE
+"==========================================
 
-"let g:one_allow_italics=1
 let g:airline_theme='dannzzor'
 let g:tmuxline_preset = {
       \'a'    : '#S',
       \'b'    : '#W',
       \'c'    : '#(date)',
       \'x'    : '#(tmux-mem-cpu-load --interval 2)',
-      \'y'    : 'up #(uptime | cut -d " " -f 1,2,3)',
+      \'y'    : '#(uptime | cut -d " " -f 1,2,3)',
       \'z'    : 'DANNZZOR'}
 "let g:tmuxline_preset = {
 "      \'a'    : '#(whoami)',
@@ -263,14 +283,12 @@ noremap <Right> <NOP>
 inoremap ./<C-X><C-F> <C-O>:lcd %:p:h<CR><C-X><C-F>
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-
-syntax enable
 
 " Prettier Config
 let g:prettier#config#single_quote = 'true'

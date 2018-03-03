@@ -95,6 +95,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+# Load pyenv for loading alternate versions of python
+export PATH="/Users/ddavenport/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 
 # Load my custom stuff from other files
 for file in ~/.{extra,exports,aliases,functions}; do
