@@ -18,15 +18,15 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'godlygeek/tabular'
 Plugin 'chip/vim-fat-finger.git'
-Plugin 'mxw/vim-jsx'
 Plugin 'othree/csscomplete.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'rstacruz/vim-closer'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'mhartington/nvim-typescript'
 Plugin 'w0rp/ale'
 Plugin 'steelsojka/deoplete-flow'
-Plugin 'mhartington/nvim-typescript'
-Plugin 'mhartington/oceanic-next'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 if has('nvim') 
   Plugin 'Shougo/deoplete.nvim'
 endif
@@ -240,17 +240,25 @@ syntax enable
 if (has("termguicolors"))
  set termguicolors
 endif
-" if terminal supports it, turn on bold
-let g:oceanic_next_terminal_bold = 1
-" if terminal supports it, turn on italics
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
 
-"colorscheme onedark
-"let g:one_allow_italics=1
+" --- Oceanic Next ---
+"colorscheme OceanicNext
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+" --------------------
 
+" --- one dark ---
+colorscheme one
+let g:one_allow_italics=1
+set background=dark
+" ----------------
+
+"colorscheme hydrangea
+"colorscheme blame
+"colorscheme sidonia
 "colorscheme dannzzor
-"set background=dark
+
+
 " set a transparent background manually
 hi Normal guibg=NONE ctermbg=NONE
 "==========================================
@@ -312,6 +320,8 @@ let g:ale_linters = {
 
 " ALE fix on save
 let g:ale_fix_on_save = 1
+
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
