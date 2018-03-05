@@ -2,18 +2,39 @@
 
     # Add all changes, interactively
     a = add -p
-    
+
     # View appreviated SHA, description, commits from all branches, and cool ascii graph
     l = log --oneline --decorate --all --graph
 
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     #ll = log --pretty=oneline -n 20 --graph --abbrev-commit
 
-    # View log with more details, names and timestamps and stuff. 
+    # View log with more details, names and timestamps and stuff.
     ll = log --color --pretty=format:'%C(auto)%h %Cred %<(10,trunc)%an %Creset%C(auto)%s %Cgreen(%cr,%ar) %Creset%C(auto)%d'
+
+    # B is shorthand for branches
+    b = branch -a
+
+    # View appreviated SHA, description, commits from all branches, and cool ascii graph
+    l = log --oneline --decorate --all --graph
+
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    #ll = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    # View log with more details, names and timestamps and stuff.
+    ll = log --color --pretty=format:'%C(auto)%h %Cred %<(10,trunc)%an %Creset%C(auto)%s %Cgreen(%cr,%ar) %Creset%C(auto)%d'
+
+    # View log showing branch structure, aka 'log branches'
+    lb = log --all --graph --decorate --oneline --simplify-by-decoration
 
     # View the current working tree status using the short format
     s = status -s
+
+    # Update all submodules
+    sub = submodule update --init --recursive
+
+    # Switch to a branch, creating it if necessary
+    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
     # Show the diff between the latest commit and the current state
     d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
@@ -53,6 +74,9 @@
     # Find branches containing commit
     fb = "!f() { git branch -a --contains $1; }; f"
 
+    # Update all submodules
+    sub = "submodule update --recursive --init"
+
     # Find tags containing commit
     ft = "!f() { git describe --always --contains $1; }; f"
 
@@ -65,6 +89,12 @@
     # Remove branches that have already been merged with master
     # a.k.a. ‘delete merged’
     dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+    # Same as ^ 'git dm' but it is interactive!
+    dmi = "git branch --merged > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches"
+
+    # Remove local references to branches that have already been deleted off remote origin
+    dmm = "remote prune origin"
 
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
@@ -81,110 +111,109 @@
         fi \
     }; f"
 
-    # Update all submodules
-    sub = "submodule update --recursive --init"
-
 [apply]
 
-    # Detect whitespace errors when applying a patch
-    whitespace = fix
+  # Detect whitespace errors when applying a patch
+  whitespace = fix
 
 [core]
 
-    # Use custom `.gitignore` and `.gitattributes`
-    excludesfile = /Users/danny/.gitignore
-    attributesfile = ~/.gitattributes
+  # Use custom `.gitignore` and `.gitattributes`
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
 
-    # Treat spaces before tabs and all kinds of trailing whitespace as an error
-    # [default] trailing-space: looks for spaces at the end of a line
-    # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error
+  # [default] trailing-space: looks for spaces at the end of a line
+  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-    # Make `git rebase` safer on OS X
-    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-    trustctime = false
+  # Make `git rebase` safer on OS X
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
 
-    # Prevent showing files whose names contain non-ASCII symbols as unversioned.
-    # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-    precomposeunicode = false
+  # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+  # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+  precomposeunicode = false
 
 [color]
 
-    # Use colors in Git commands that are capable of colored output when
-    # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
-    ui = auto
+  # Use colors in Git commands that are capable of colored output when
+  # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+  ui = auto
 
 [color "branch"]
 
-    current = yellow reverse
-    local = yellow
-    remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 
 [color "diff"]
 
-    meta = yellow bold
-    frag = magenta bold # line info
-    old = red # deletions
-    new = green # additions
+  meta = yellow bold
+  frag = magenta bold # line info
+  old = red # deletions
+  new = green # additions
 
 [color "status"]
 
-    added = yellow
-    changed = green
-    untracked = cyan
+  added = yellow
+  changed = green
+  untracked = cyan
 
 [diff]
 
-    # Detect copies as well as renames
-    renames = copies
+  # Detect copies as well as renames
+  renames = copies
+  tool = vimdiff
+
+[difftool]
+  prompt = false
 
 [help]
 
-    # Automatically correct and execute mistyped commands
-    autocorrect = 1
+  # Automatically correct and execute mistyped commands
+  autocorrect = 1
 
 [merge]
 
-    # Include summaries of merged commits in newly created merge commit messages
-    log = true
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
 
 [push]
 
-    # Use the Git 1.x.x default to avoid errors on machines with old Git
-    # installations. To use `simple` instead, add this to your `~/.extra` file:
-    # `git config --global push.default simple`. See http://git.io/mMah-w.
+  # Use the Git 1.x.x default to avoid errors on machines with old Git
+  # installations. To use `simple` instead, add this to your `~/.extra` file:
+  # `git config --global push.default simple`. See http://git.io/mMah-w.
 	default = simple
 
 # URL shorthands
 
 [url "git@github.com:"]
 
-    insteadOf = "gh:"
-    pushInsteadOf = "github:"
-    pushInsteadOf = "git://github.com/"
+  insteadOf = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
 
 [url "git://github.com/"]
 
-    insteadOf = "github:"
+  insteadOf = "github:"
 
 [url "git@gist.github.com:"]
 
-    insteadOf = "gst:"
-    pushInsteadOf = "gist:"
-    pushInsteadOf = "git://gist.github.com/"
+  insteadOf = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
 
 [url "git://gist.github.com/"]
 
-    insteadOf = "gist:"
-[user]
-	name = Danny Davenport
-	email = danny.davenport@k3integrations.com
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  insteadOf = "gist:"
 
-[gitopen "gitlab"]
-	domain = hub.k3integrations.com
+[user]
+
+	name = Danny Davenport
+	email = ddavenport420@gmail.com
+
+
+
+[gui]
+	recentrepo = /Users/ddavenport/repos/symplexity-client-portal-frontend
