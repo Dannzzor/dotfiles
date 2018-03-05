@@ -1,15 +1,15 @@
 " ===============================================================
-" OceanicNext
+" OceanicNextLight
 " Author: Mike Hartington
 " ===============================================================
 
 " {{{ Setup
-  set background=dark
+  set background=light
   hi clear
   if exists("syntax_on")
     syntax reset
   endif
-  let g:colors_name="OceanicNext"
+  let g:colors_name="OceanicNextLight"
 " }}}
 " {{{ Italics
   let g:oceanic_next_terminal_italic = get(g:, 'oceanic_next_terminal_italic', 0)
@@ -17,34 +17,33 @@
   if g:oceanic_next_terminal_italic == 1
     let s:italic = "italic"
   endif
-"}}}
+" }}}
 " {{{ Bold
   let g:oceanic_next_terminal_bold = get(g:, 'oceanic_next_terminal_bold', 0)
   let s:bold = ""
   if g:oceanic_next_terminal_bold == 1
    let s:bold = "bold"
   endif
-"}}}
+" }}}
 " {{{ Colors
-  let s:base00=['#1b2b34', '235']
-  let s:base01=['#343d46', '237']
-  let s:base02=['#4f5b66', '240']
-  let s:base03=['#65737e', '243']
-  let s:base04=['#a7adba', '145']
-  let s:base05=['#c0c5ce', '251']
-  let s:base06=['#cdd3de', '252']
-  let s:base07=['#d8dee9', '253']
-  let s:base08=['#ec5f67', '203']
-  let s:base09=['#f99157', '209']
-  let s:base0A=['#fac863', '221']
-  let s:base0B=['#99c794', '114']
-  let s:base0C=['#62b3b2', '73']
-  let s:base0D=['#6699cc', '68']
-  let s:base0E=['#c594c5', '176']
-  let s:base0F=['#ab7967', '137']
+  let s:base00=['#d8dee9', '253']
+  let s:base01=['#cdd3de', '252']
+  let s:base02=['#c0c5ce', '251']
+  let s:base03=['#a7adba', '145']
+  let s:base04=['#65737e', '243']
+  let s:base05=['#4f5b66', '240']
+  let s:base06=['#343d46', '237']
+  let s:base07=['#1b2b34', '235']
+  let s:base08=['#b40b11', '124']
+  let s:base09=['#b4713d', '131']
+  let s:base0A=['#a48c32', '137']
+  let s:base0B=['#869235', '101']
+  let s:base0C=['#5b9c90', '72']
+  let s:base0D=['#526f93', '60']
+  let s:base0E=['#896a98', '96']
+  let s:base0F=['#9a806d', '101']
   let s:base10=['#ffffff', '15']
   let s:none=['NONE', 'NONE']
-
 " }}}
 " {{{ Highlight function
 function! <sid>hi(group, fg, bg, attr, attrsp)
@@ -251,29 +250,20 @@ call <sid>hi('xmlEndTag',                  s:base0C, '',       '',          '')
 " }}}
 
 let g:terminal_color_0=s:base00[0]
-let g:terminal_color_8=s:base00[0]
-
 let g:terminal_color_1=s:base08[0]
-let g:terminal_color_9=s:base08[0]
-
 let g:terminal_color_2=s:base0B[0]
-let g:terminal_color_10=s:base0B[0]
-
 let g:terminal_color_3=s:base0A[0]
-let g:terminal_color_11=s:base0A[0]
-
 let g:terminal_color_4=s:base0D[0]
-let g:terminal_color_12=s:base0D[0]
-
 let g:terminal_color_5=s:base0E[0]
-let g:terminal_color_13=s:base0E[0]
-
 let g:terminal_color_6=s:base0C[0]
-let g:terminal_color_14=s:base0C[0]
-
 let g:terminal_color_7=s:base05[0]
-let g:terminal_color_15=s:base05[0]
-
+let g:terminal_color_8=s:base03[0]
+let g:terminal_color_9=s:base09[0]
+let g:terminal_color_10=s:base01[0]
+let g:terminal_color_11=s:base02[0]
+let g:terminal_color_12=s:base04[0]
+let g:terminal_color_13=s:base06[0]
+let g:terminal_color_14=s:base0F[0]
+let g:terminal_color_15=s:base07[0]
 let g:terminal_color_background=s:base00[0]
 let g:terminal_color_foreground=s:base10[0]
-

@@ -9,41 +9,48 @@ Plugin 'gmarik/Vundle.vim'
 " Plugins ===================================
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'kien/ctrlp.vim.git'
-Plugin 'cohama/lexima.vim.git'
-Plugin 'ervandew/supertab.git'
-Plugin 'Raimondi/delimitMate.git'
-Plugin 'fatih/vim-go.git'
-Plugin 'kchmck/vim-coffee-script.git'
 Plugin 'moll/vim-bbye.git'
-Plugin 'rust-lang/rust.vim.git'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'bling/vim-airline.git'
 Plugin 'rking/ag.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'mattn/emmet-vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'godlygeek/tabular'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'cocopon/iceberg.vim'
-Plugin 'tomasr/molokai'
-Plugin 'sickill/vim-monokai'
 Plugin 'chip/vim-fat-finger.git'
-Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'othree/csscomplete.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'rstacruz/vim-closer'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'mhartington/nvim-typescript'
+Plugin 'w0rp/ale'
+Plugin 'steelsojka/deoplete-flow'
+Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'digitaltoad/vim-pug'
-
+if has('nvim')
+  Plugin 'Shougo/deoplete.nvim'
+endif
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" plugin junkyard =============================
+"Plugin 'ajh17/VimCompletesMe'
+"Plugin 'rstacruz/vim-hyperstyle'
+"Plugin 'fatih/vim-go.git'
+"Plugin 'kchmck/vim-coffee-script.git'
+"Plugin 'rust-lang/rust.vim.git'
+"Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet-snippets'
+"Plugin 'ervandew/supertab.git'
+"Plugin 'digitaltoad/vim-pug'
 
 
 " Settings ====================================
 set path+=**                             " Set path search recursive
 set shortmess=a                          " Use shorter messages to avoid the click enter to continue warning
+set path+=**                             " Set path search recursive
 set autoindent                           " Copy indent from last line when starting new line
 set backspace=indent,eol,start
 set colorcolumn=120                      " 120 width guideline
@@ -81,7 +88,7 @@ set nojoinspaces                         " Only insert single space after a '.',
 set nostartofline                        " Don't reset the cursor to the start of the line when moving around
 set noswapfile                           " Do not use swap files
 set nowrap                               " Do not wrap lines
-set number                               " Enable line numbers
+set number relativenumber                " Enable relative line numbers
 set ofu=syntaxcomplete#Complete          " Set omni-completion method
 set report=0                             " Show all changes
 set ruler                                " Enable coordinates in bottom right
@@ -95,9 +102,7 @@ set splitright                           " New windows goes right
 set tabstop=2                            " Hitting <Tab> will produce 2 spaces
 set title                                " Show the filename in the window titlebar
 set ttyfast                              " Send more characters at a given time
-set ttymouse=xterm                       " Set mouse type to xterm
 set undofile                             " Persistent Undo
-set viminfo=%,'9999,s512,n~/.vim/viminfo " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered
 set visualbell                           " Use visual bell instead of audible bell (annnnnoying)
 set wildchar=<TAB>                       " Character for CLI expansion (TAB-completion)
 set wildmenu                             " Hitting TAB in command mode will show possible completions above command line
@@ -105,14 +110,30 @@ set wildmode=list:longest                " Complete only until point of ambiguit
 set winminheight=0                       " Allow splits to be reduced to a single line
 set wrapscan                             " Searches wrap around end of file
 
+if has('nvim')
+  " some neovim specific configs
+else
+  " some vim specific configs
+  set viminfo=%,'9999,s512,n~/.vim/viminfo " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered
+  set ttymouse=xterm                       " Set mouse type to xterm
+endif
+
+
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
 
 set wildignore+=.DS_Store,*/bower_components/*,*/node_modules/*
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
 
-
 let mapleader = ","
+
+" auto toggle hybrid-relative line numbers when a buffer is focused
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 
 
 " Config ====================================
@@ -123,7 +144,7 @@ set undodir=~/.vim/undo
 
 command! MakeTags !ctags -R --exclude=.git --exclude=log --exclude=node_modules .
 
-" FastEscape 
+" FastEscape
 " Speed up transition from modes
 if ! has('gui_running')
   set ttimeoutlen=10
@@ -134,7 +155,7 @@ if ! has('gui_running')
   augroup END
 endif
 
-" Toggle show tabs and trailing spaces (,c) 
+" Toggle show tabs and trailing spaces (,c)
 set lcs=tab:»·,trail:·,eol:¬,nbsp:_,extends:>,precedes:<
 set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
@@ -146,11 +167,19 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 noremap <Leader>. :Ag<Space>
 
 " comma j runs JSHint
-noremap <Leader>j :JSHint<CR>
+"noremap <Leader>j :JSHint<CR>
+" set runtimepath+=~/.vim/bundle/jshint2.vim/
 
 map <Leader>/ :NERDTreeToggle<CR>
 "map <Leader>/ :Vexplore<CR>
 "map <leader>/ :call VexToggle(getcwd())<CR>
+
+" nerdtree shows hidden files
+let NERDTreeShowHidden=1
+
+" close vim if nerdtree is only open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 " CTRL-P
 let g:ctrlp_map = '<leader>,'
@@ -184,6 +213,7 @@ map <leader>n :bprevious<CR>
 map <leader>x :x<CR>
 
 " close current buffer without closing window
+" uses vim-bbye plugin
 noremap <leader>w :Bdelete<CR>
 
 " open new empty buffer in current window
@@ -203,12 +233,53 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-"set background=dark
-"let g:airline_theme='one'
-"let g:one_allow_italics=1
+" Theme stuff =============================
+" install themes in .vim/colors
+syntax enable
+" Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" --- Oceanic Next ---
+"colorscheme OceanicNext
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+" --------------------
+
+" --- one dark ---
+colorscheme one
+let g:one_allow_italics=1
+set background=dark
+" ----------------
+
+"colorscheme hydrangea
+"colorscheme blame
+"colorscheme sidonia
 "colorscheme dannzzor
-colorscheme onedark
+
+
+" set a transparent background manually
+hi Normal guibg=NONE ctermbg=NONE
+"==========================================
+
 let g:airline_theme='dannzzor'
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'c'    : '#(date)',
+      \'x'    : '#(tmux-mem-cpu-load --interval 2)',
+      \'y'    : '#(uptime | cut -d " " -f 1,2,3)',
+      \'z'    : 'DANNZZOR'}
+"let g:tmuxline_preset = {
+"      \'a'    : '#(whoami)',
+"      \'b'    : '#W',
+"      \'c'    : '#H',
+"      \'win'  : '#I #W',
+"      \'cwin' : '#I #W',
+"      \'x'    : '#(tmux-mem-cpu-load --interval 2)',
+"      \'y'    : '%a %R',
+"      \'z'    : '#(ip)'}
 
 
 noremap <Up> <NOP>
@@ -216,95 +287,41 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-"   if !exists('g:neocomplete#keyword_patterns')
-"     let g:neocomplete#keyword_patterns = {}
-"   endif
-"   let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" Remap Ctrl-x-f to use relative path instead of from PWD
+inoremap ./<C-X><C-F> <C-O>:lcd %:p:h<CR><C-X><C-F>
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-"Plugin key-mappings.
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets' behavior.
-" imap <TAB> <C-y>,
-
-" nerdtree shows hidden files
-let NERDTreeShowHidden=1
-
-" close vim if nerdtree is only open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" set runtimepath+=~/.vim/bundle/jshint2.vim/
-
-syntax enable
-syntax on
-" ----------------------------------------------------
-" lets try to replace NerdTree with the builtin netrw!
-" ----------------------------------------------------
-fun! NormalizeWidths()
-  let eadir_pref = &eadirection
-  set eadirection=hor
-  set equalalways! equalalways!
-  let &eadirection = eadir_pref
-endfun
-
-fun! VexSize(vex_width)
-  execute "vertical resize" . a:vex_width
-  set winfixwidth
-  call NormalizeWidths()
-endfun
-
-fun! VexOpen(dir)
-  let g:netrw_browse_split=4   " open files in previous window
-  let vex_width=25
-  execute "Vexplore " . a:dir
-  let t:vex_buf_nr = bufnr("%")
-  wincmd H
-
-  call VexSize(vex_width)
-endfun
-
-fun! VexClose()
-  let cur_win_nr = winnr()
-  let target_nr = ( cur_win_nr == 1 ? winnr("#") : cur_win_nr )
-
-  1wincmd w
-  close
-  unlet t:vex_buf_nr
-
-  execute (target_nr -1) . "wincmd w"
-  call NormalizeWidths()
-endfun
-
-fun! VexToggle(dir)
-  if exists("t:vex_buf_nr")
-    call VexClose()
-  else
-    call VexOpen(a:dir)
-  endif
-endfun
-
-augroup NetrwGroup
-  autocmd! BufEnter * call NormalizeWidths()
-augroup END
-
-let g:netrw_liststyle=0              " thin (change to 3 for tree view)
-let g:netrw_banner=0                 " no banner
-let g:netrw_altv=1                   " open new files on the right
-let g:netrw_preview=1                " open previews vertically
-" ----------------------------------------------------
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
+" Prettier Config
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#trailing_comma = 'none'
+
+" ALE configuration
+let g:ale_fixers = {
+\ 'javascript': ['eslint'],
+\ 'typescript': ['tslint', 'prettier']
+\}
+
+let g:ale_completion_enabled = 1
+let g:ale_echo_msg_warning_str = '△'
+let g:ale_echo_msg_error_str = '⨯'
+let g:ale_echo_msg_format = '[%severity% %linter%] %s'
+let g:ale_linters = {
+\ 'javascript': ['flow', 'jshint'],
+\ 'typescript': ['flow', 'tslint']
+\}
+
+" ALE fix on save
+let g:ale_fix_on_save = 1
+
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
