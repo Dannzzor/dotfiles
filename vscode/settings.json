@@ -1,0 +1,27 @@
+{
+    "tslint.configFile": "/Users/ddavenport/repos/symplexity-client-portal-frontend/tslint.json",
+    "typescript.tsdk": "/usr/local/lib/node_modules/typescript/lib",
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "prettier.singleQuote": true,
+    // "editor.fontFamily": "Fira Code",
+    // "editor.fontFamily": "Hack",
+    "editor.fontFamily": "Operator Mono",
+    "editor.fontLigatures": true,
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "onFocusChange",
+    "files.autoSaveDelay": 3000,
+    "editor.lineNumbers": "relative",
+    "workbench.colorTheme": "Ariake Dark",
+    "workbench.iconTheme": "material-icon-theme",
+    "window.zoomLevel": 1,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "explorer.confirmDragAndDrop": false,
+    "material-icon-theme.showUpdateMessage": false,
+    "gitlens.keymap": "alternate",
+    // "vscode_custom_css.imports": [
+    //     "file:///Users/ddavenport/repos/vscodestyles.css"
+    // ]
+}
