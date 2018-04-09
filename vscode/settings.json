@@ -21,6 +21,17 @@
     "explorer.confirmDragAndDrop": false,
     "material-icon-theme.showUpdateMessage": false,
     "gitlens.keymap": "alternate",
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
+    "explorer.confirmDelete": false,
     // "vscode_custom_css.imports": [
     //     "file:///Users/ddavenport/repos/vscodestyles.css"
     // ]
