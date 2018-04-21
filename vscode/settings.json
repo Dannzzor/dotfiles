@@ -9,7 +9,7 @@
     "editor.fontFamily": "Operator Mono",
     "editor.fontLigatures": true,
     "files.trimTrailingWhitespace": true,
-    "files.autoSave": "onFocusChange",
+    // "files.autoSave": "onFocusChange",
     "files.autoSaveDelay": 3000,
     "editor.lineNumbers": "relative",
     "workbench.colorTheme": "Ariake Dark",
@@ -32,6 +32,18 @@
         "suppressShowKeyBindingsNotice": true
     },
     "explorer.confirmDelete": false,
+    "sync.gist": "3fb500de7d21d0a2e4e5c30e23da53de",
+    "sync.lastUpload": "2018-04-20T13:45:24.344Z",
+    "sync.autoDownload": false,
+    "sync.autoUpload": false,
+    "sync.lastDownload": "",
+    "sync.forceDownload": false,
+    "sync.host": "",
+    "sync.pathPrefix": "",
+    "sync.quietSync": false,
+    "sync.askGistName": false,
+    "sync.removeExtensions": true,
+    "sync.syncExtensions": true,
     // "vscode_custom_css.imports": [
     //     "file:///Users/ddavenport/repos/vscodestyles.css"
     // ]

@@ -1,7 +1,7 @@
-" Name:    one vim colorscheme
-" Author:  Ramzi Akremi
+" Name:    dannzzor - one / ariake dark mashup
+" Author:  Danny Davenport
 " License: MIT
-" Version: 1.1.1-pre
+" Version: 0.0.1
 
 " Global setup =============================================================={{{
 
@@ -269,16 +269,21 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     let s:mono_3 = '5c6370'
     let s:mono_4 = '4b5263'
 
-    let s:hue_1  = '56b6c2' " cyan
-    let s:hue_2  = '61afef' " blue
-    let s:hue_3  = 'c678dd' " purple
-    let s:hue_4  = '98c379' " green
+    let s:hue_2  = '7C7CD9' " lightblue
+    let s:hue_3  = '7FA8D5' " blue
+    let s:hue_1  = 'A06EED' " purple
+    let s:hue_4  = '97EBE6' " green
 
-    let s:hue_5   = 'e06c75' " red 1
-    let s:hue_5_2 = 'be5046' " red 2
+    "let s:hue_5   = 'e06c75' " red 1
+    "let s:hue_5_2 = 'be5046' " red 2
+    let s:hue_5 = 'df2f8b' " red 1
+    let s:hue_5_2   = 'cf3e8a' " red 2
+    " nice pink: #cf3e8a
+    " darker pink: #df2f8b
 
-    let s:hue_6   = 'd19a66' " orange 1
-    let s:hue_6_2 = 'e5c07b' " orange 2
+    let s:hue_6   = 'F2F7FC' " white
+    let s:hue_6_2 = '7FA8D5' " gray
+    "let s:hue_6_2 = 'E4E4E4' " gray
 
     let s:syntax_bg     = '282c34'
     let s:syntax_gutter = '636d83'
