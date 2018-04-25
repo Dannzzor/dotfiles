@@ -183,10 +183,9 @@
 
 [push]
 
-  # Use the Git 1.x.x default to avoid errors on machines with old Git
-  # installations. To use `simple` instead, add this to your `~/.extra` file:
-  # `git config --global push.default simple`. See http://git.io/mMah-w.
-	default = simple
+  # https://stackoverflow.com/questions/17096311/why-do-i-need-to-explicitly-push-a-new-branch/17096880#17096880
+  # this lets us just use `git push -u` instead of having to specify remote and branchname
+	default = current
 
 # URL shorthands
 
