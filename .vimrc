@@ -305,7 +305,7 @@ let g:prettier#config#trailing_comma = 'none'
 
 " ALE configuration
 let g:ale_fixers = {
-\ 'javascript': ['eslint'],
+\ 'javascript': ['eslint', 'prettier'],
 \ 'typescript': ['tslint', 'prettier']
 \}
 
