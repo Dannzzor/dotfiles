@@ -27,6 +27,7 @@ Plugin 'w0rp/ale'
 Plugin 'steelsojka/deoplete-flow'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'chrisbra/Colorizer'
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim'
 endif
@@ -248,8 +249,14 @@ endif
 " --------------------
 
 " --- one dark ---
-colorscheme one
-let g:one_allow_italics=1
+"colorscheme one
+"let g:one_allow_italics=1
+"set background=dark
+" ----------------
+
+" --- ariake dark ---
+colorscheme ariake
+let g:ariake_allow_italics=1
 set background=dark
 " ----------------
 
