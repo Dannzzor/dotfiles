@@ -5,12 +5,6 @@ function md() {
 	mkdir -p "$@" && cd "$@"
 }
 
-# Remove all exited docker containers
-function docker_clean() {
-  docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm
-}
-
-
 # find shorthand
 function f() {
 	find . -name "$1" 2>&1 | grep -v 'Permission denied'
@@ -185,3 +179,9 @@ function nullify() {
 function dcrms() {
   docker rm -v $(docker ps -a -q -f status=exited)
 }
+
+# Remove all exited docker containers
+function docker_clean() {
+  docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm
+}
+
