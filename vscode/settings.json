@@ -14,7 +14,7 @@
     "editor.lineNumbers": "relative",
     "workbench.colorTheme": "Ariake Dark",
     "workbench.iconTheme": "material-icon-theme",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "git.autofetch": true,
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
@@ -44,6 +44,7 @@
     "sync.askGistName": false,
     "sync.removeExtensions": true,
     "sync.syncExtensions": true,
+    "gitlens.historyExplorer.enabled": true,
     // "vscode_custom_css.imports": [
     //     "file:///Users/ddavenport/repos/vscodestyles.css"
     // ]
