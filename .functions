@@ -32,7 +32,7 @@ alias lsd='ls -la | grep "^d" | octal && ls -la | grep "^-" | octal && ls -la | 
 
 
 # cd into whatever is the forefront Finder window.
-cdf() {  # short for cdfinder
+function cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }
 
@@ -46,7 +46,7 @@ function server() {
 }
 
 # Copy w/ progress
-cp_p () {
+function cp_p () {
   rsync -WavP --human-readable --progress $1 $2
 }
 
