@@ -28,9 +28,6 @@ alias y="yarn"
 alias d="docker"
 alias dc="docker-compose"
 alias dm="docker-machine"
-alias logapp="dc logs --tail 50 -f app"
-alias logweb="dc logs --tail 50 -f web"
-#alias dmeval="eval $(docker-machine env default)"
 alias cask='brew cask'
 alias ci='code-insiders'
 alias ctags="`brew --prefix`/bin/ctags"
@@ -159,13 +156,20 @@ alias t-list="tsuru app-list"
 # Kubernetics stuff
 alias k="kubectl"
 
-
+# Docker stuff
+alias logapp="dc logs --tail 50 -f app"
+alias logweb="dc logs --tail 50 -f web"
+#alias dmeval="eval $(docker-machine env default)"
 # docker delete dangling images
-alias ddm="docker rmi $(docker images --quiet --filter 'dangling=true')"
+#alias ddm="docker rmi $(docker images --quiet --filter 'dangling=true')"
 alias dchelp="echo dc down -v to stop all dc containers"
 
 alias portforward="echo 'rdr pass inet proto tcp from any to any port 80 -> 8080' | sudo pfctl -ef -"
 alias unportforward="sudo pfctl -F all -f /etc/pf.conf"
 alias forwardedports="sudo pfctl -s nat"
 
+# Ionic / cordova stuff
+alias icb="ionic cordova run browser --livereload"
+alias ici="ionic cordova run ios --livereload"
+alias ilab="ionic serve --lab"
 
