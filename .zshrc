@@ -2,7 +2,14 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/ddavenport/.oh-my-zsh
+export ZSH=/Users/danny/.oh-my-zsh
+
+# history
+SAVEHIST=100000
+
+# vim bindings
+bindkey -v
+
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -96,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Load pyenv for loading alternate versions of python
-export PATH="/Users/ddavenport/.pyenv/bin:$PATH"
+export PATH="/Users/danny/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
