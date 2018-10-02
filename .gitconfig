@@ -7,6 +7,9 @@
   a = add -p
 
   # B is shorthand for branches
+  # if this the output is paged and requires you to press 'q' to quit,
+  # instead tell git to use 'cat' as its global pager with the following:
+  #git config --global core.pager cat
   b = branch -a
 
   # View appreviated SHA, description, commits from all branches, and cool ascii graph
@@ -107,6 +110,7 @@
       fi \
   }; f"
 
+
 [apply]
 
   # Detect whitespace errors when applying a patch
@@ -130,6 +134,7 @@
   # Prevent showing files whose names contain non-ASCII symbols as unversioned.
   # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
   precomposeunicode = false
+	pager = cat
 
 [color]
 
@@ -210,8 +215,6 @@
 
 
 
-[gui]
-	recentrepo = /Users/ddavenport/repos/symplexity-client-portal-frontend
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
