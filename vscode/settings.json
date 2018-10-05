@@ -45,6 +45,7 @@
     "sync.removeExtensions": true,
     "sync.syncExtensions": true,
     "gitlens.historyExplorer.enabled": true,
+    "breadcrumbs.enabled": true,
     // "vscode_custom_css.imports": [
     //     "file:///Users/ddavenport/repos/vscodestyles.css"
     // ]
