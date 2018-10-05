@@ -86,6 +86,7 @@ set lazyredraw                           " Don't redraw when we don't have to
 set magic                                " Enable extended regexes
 set mouse+=a                             " Enable mouse in all modes
 set nojoinspaces                         " Only insert single space after a '.', '?', and '!' witha join command
+set noshowmode                           " Hide the '--INSERT--' so we can see autocomplete stufffff
 set nostartofline                        " Don't reset the cursor to the start of the line when moving around
 set noswapfile                           " Do not use swap files
 set nowrap                               " Do not wrap lines
@@ -321,12 +322,15 @@ let g:ale_echo_msg_warning_str = '△'
 let g:ale_echo_msg_error_str = '⨯'
 let g:ale_echo_msg_format = '[%severity% %linter%] %s'
 let g:ale_linters = {
-\ 'javascript': ['flow', 'jshint'],
+\ 'javascript': ['flow', 'eslint'],
 \ 'typescript': ['flow', 'tslint']
 \}
 
+let g:ale_set_highlights = 1
+let g:ale_set_signs = 0
+
 " ALE fix on save
-let g:ale_fix_on_save = 1
+"let g:ale_fix_on_save = 1
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
