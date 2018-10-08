@@ -262,75 +262,45 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
 
   " Color definition --------------------------------------------------------{{{
   let s:dark = 0
-  if &background ==# 'dark'
 
-    " junkyard ----
-    " #e06c75  #be5046 #528bff
+  " junkyard ----
+  " #e06c75  #be5046 #528bff
 
-    let s:dark = 1
+  let s:dark = 1
 
-    " use this one to figure out what stuff is
-    let s:wtf    = '00ffaa' "#00ffaa;
+  " use this one to figure out what stuff is
+  let s:wtf    = '00ffaa' "#00ffaa;
 
-    let s:mono_1 = 'abb2bf' "#abb2bf
-    let s:mono_2 = '828997' "#828997
-    let s:mono_3 = '5c6370' "#5c6370
-    let s:mono_4 = '4b5263' "#4b5263
+  let s:mono_1 = 'abb2bf' "#abb2bf
+  let s:mono_2 = '828997' "#828997
+  let s:mono_3 = '5c6370' "#5c6370
+  let s:mono_4 = '4b5263' "#4b5263
 
-    let s:hue_1  = 'A06EED' " #A06EED
-    let s:hue_1_2= 'D7A0EE' " #D7A0EE
-    let s:hue_2  = '7C7CD9' " #7C7CD9
-    let s:hue_3  = '7FA8D5' " #7FA8D5
-    let s:hue_4  = '97EBE6' " #97EBE6
+  let s:hue_1  = 'A06EED' " #A06EED
+  let s:hue_1_2= 'D7A0EE' " #D7A0EE
+  let s:hue_2  = '7C7CD9' " #7C7CD9
+  let s:hue_3  = '7FA8D5' " #7FA8D5
+  let s:hue_4  = '97EBE6' " #97EBE6
 
-    let s:hue_5    = 'df2f8b' " #df2f8b
-    let s:hue_5_2  = 'cf3e8a' " #cf3e8a
+  let s:hue_5    = 'df2f8b' " #df2f8b
+  let s:hue_5_2  = 'cf3e8a' " #cf3e8a
+  let s:hue_5_3  = 'e45649' " #e45649
+  let s:hue_5_4  = 'ca1243' " #ca1243
 
-    let s:hue_6   = 'F2F7FC' " #F2F7FC
-    let s:hue_6_2 = '97EBE6' " #97EBE6
+  let s:hue_6   = 'F2F7FC' " #F2F7FC
+  let s:hue_6_2 = '97EBE6' " #97EBE6
 
-    let s:syntax_bg     = '282c34' " #282c34
-    let s:syntax_gutter = '636d83' " #636d83
-    let s:syntax_cursor = '2c323c' " #2c323c
+  let s:syntax_bg     = '282c34' " #282c34
+  let s:syntax_gutter = '636d83' " #636d83
+  let s:syntax_cursor = '2c323c' " #2c323c
 
-    "let s:syntax_accent = 'cccccc' " #ccc
-    let s:syntax_accent = 'A06EED' " #A06EED
+  "let s:syntax_accent = 'cccccc' " #ccc
+  let s:syntax_accent = 'A06EED' " #A06EED
 
-    let s:vertsplit    = '181a1f' " #181a1f
-    let s:special_grey = '3b4048' " #3b4048
-    let s:visual_grey  = '3e4452' " #3e4452
-    let s:pmenu        = '333841' " #333841
-  else
-    let s:wtf    = '00ffaa' "#00ffaa;
-    let s:mono_1 = '494b53' " #494b53
-    let s:mono_2 = '696c77' " #696c77
-    let s:mono_3 = 'a0a1a7' " #a0a1a7
-    let s:mono_4 = 'c2c2c3' " #c2c2c3
-
-    let s:hue_1  = '0184bc' " cyan " #0184bc
-    let s:hue_2  = '4078f2' " blue " #4078f2
-    let s:hue_1_2= 'D7A0EE' " #D7A0EE
-    let s:hue_3  = 'a626a4' " purple " #a626a4
-    let s:hue_4  = '50a14f' " green " #50a14f
-
-    let s:hue_5   = 'e45649' " red 1 " #e45649
-    let s:hue_5_2 = 'ca1243' " red 2 " #ca1243
-
-    let s:hue_6   = '986801' " orange 1 " #986801
-    let s:hue_6_2 = 'c18401' " orange 2 " #c18401
-
-    let s:syntax_bg     = 'fafafa' " #fafafa
-    let s:syntax_gutter = '9e9e9e' " #9e9e9e
-    let s:syntax_cursor = 'f0f0f0' " #f0f0f0
-
-    let s:syntax_accent = '526fff' " #526fff
-    let s:syntax_accent_2 = '0083be' " #0083be
-
-    let s:vertsplit    = 'e7e9e1' " #e7e9e1
-    let s:special_grey = 'd3d3d3' " #d3d3d3
-    let s:visual_grey  = 'd0d0d0' " #d0d0d0
-    let s:pmenu        = 'dfdfdf' " #dfdfdf
-  endif
+  let s:vertsplit    = '181a1f' " #181a1f
+  let s:special_grey = '3b4048' " #3b4048
+  let s:visual_grey  = '3e4452' " #3e4452
+  let s:pmenu        = '333841' " #333841
 
   let s:syntax_fg = s:mono_1
   let s:syntax_fold_bg = s:mono_3
@@ -419,7 +389,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('SpecialChar',    '',              '',          '')
   call <sid>X('Tag',            '',              '',          '')
   call <sid>X('Delimiter',      '',              '',          '')
-  call <sid>X('SpecialComment', '',              '',          '')
+  call <sid>X('SpecialComment', s:mono_3,        '',    'italic')
   call <sid>X('Debug',          '',              '',          '')
   call <sid>X('Underlined',     '',              '',          'underline')
   call <sid>X('Ignore',         '',              '',          '')
@@ -782,6 +752,13 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('SpellLocal',   '', s:syntax_bg, 'undercurl')
   call <sid>X('SpellCap',     '', s:syntax_bg, 'undercurl')
   call <sid>X('SpellRare',    '', s:syntax_bg, 'undercurl')
+  " }}}
+
+  " ALE async linting highlighting ------------------------------------------{{{
+  call <sid>X('ALEError',         s:hue_5_3, s:syntax_bg, 'undercurl')
+  call <sid>X('ALEErrorLine',     s:hue_5_3, s:vertsplit, 'undercurl')
+  " call <sid>X('ALEStyleWarning',  s:hue_5,   s:vertsplit, 'undercurl')
+  call <sid>X('ALEWarningLine',   s:hue_5,   s:vertsplit, 'undercurl')
   " }}}
 
   " Vim highlighting --------------------------------------------------------{{{

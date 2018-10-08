@@ -1,20 +1,20 @@
 " Theme: dannzzor
 " Version: 0.1
 " Maintainer: dannzzor <ddavenport420@gmail.com>
-" 
+"
 " Copyright (c) 2014, dannzzor
 " All rights reserved.
-" 
+"
 " Redistribution and use in source and binary forms, with or without
 " modification, are permitted provided that the following conditions are met:
-" 
+"
 " * Redistributions of source code must retain the above copyright notice, this
 "   list of conditions and the following disclaimer.
-" 
+"
 " * Redistributions in binary form must reproduce the above copyright notice,
 "   this list of conditions and the following disclaimer in the documentation
 "   and/or other materials provided with the distribution.
-" 
+"
 " THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 " AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 " IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -53,7 +53,7 @@ highlight DiffDelete      guifg=#101010    guibg=#d7005f    gui=NONE
 highlight DiffText        guifg=#101010    guibg=#af57ff    gui=NONE
 highlight SignColumn      guifg=#d7005f    guibg=#101010    gui=NONE
 highlight Conceal         guifg=#ff5f5f    guibg=NONE       gui=NONE
-highlight SpellBad        guifg=#d7005f    guibg=NONE       gui=undercurl    guisp=#d7005f
+highlight SpellBad ALEError link       guifg=#d7005f    guibg=NONE       gui=undercurl    guisp=#d7005f
 highlight SpellCap        guifg=#af87ff    guibg=NONE       gui=undercurl    guisp=#af87ff
 highlight SpellRare       guifg=#00ff87    guibg=NONE       gui=undercurl    guisp=#00ff87
 highlight SpellLocal      guifg=#ff5f5f    guibg=NONE       gui=undercurl    guisp=#ff5f5f
@@ -91,7 +91,7 @@ highlight Comment         guifg=#585858    guibg=NONE       gui=NONE
 highlight Constant        guifg=#af87ff    guibg=NONE       gui=NONE
 highlight String          guifg=#ffff87    guibg=NONE       gui=NONE
 highlight Character       guifg=#ffff87    guibg=NONE       gui=NONE
-highlight Underlined      guifg=NONE       guibg=NONE       gui=underline
+highlight Underlined      guifg=#ff5f5f    guibg=NONE       gui=underline
 highlight diffRemoved     guifg=#d7005f    guibg=NONE       gui=NONE
 highlight diffAdded       guifg=#5f87ff    guibg=NONE       gui=NONE
 highlight diffFile        guifg=#af87ff    guibg=NONE       gui=NONE
