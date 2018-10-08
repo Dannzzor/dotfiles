@@ -28,6 +28,7 @@ Plugin 'steelsojka/deoplete-flow'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'chrisbra/Colorizer'
+Plugin 'ternjs/tern_for_vim'
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim'
 endif
@@ -279,6 +280,7 @@ let g:tmuxline_preset = {
       \'x'    : '#(tmux-mem-cpu-load --interval 2)',
       \'y'    : '#(uptime | cut -d " " -f 1,2,3)',
       \'z'    : 'DANNZZOR'}
+
 "let g:tmuxline_preset = {
 "      \'a'    : '#(whoami)',
 "      \'b'    : '#W',
@@ -334,5 +336,16 @@ let g:ale_set_signs = 0
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-" deoplete
+" deoplete (autocomplete) ======================
 let g:deoplete#enable_at_startup = 1
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" tern
+if exists('g:plugs["tern_for_vim"]')
+  let g:tern_show_argument_hints = 'on_hold'
+  let g:tern_show_signature_in_pum = 1
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
+endif
+
+
