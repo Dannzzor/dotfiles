@@ -1,0 +1,12 @@
+# If applied, this commit will...
+
+# Why is this change needed?
+Prior to this change,
+
+# How does it address the issue?
+This change
+
+# Provide links to any relevant tickets, articles or other resources
+
+
+# add this to git with: git config --global commit.template ~/.git_commit_msg.txt
