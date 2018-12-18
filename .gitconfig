@@ -1,5 +1,4 @@
 [alias]
-
   # Undo the last commit (without losing work)
   undo = reset HEAD~1
 
@@ -134,7 +133,7 @@
   # Prevent showing files whose names contain non-ASCII symbols as unversioned.
   # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
   precomposeunicode = false
-	pager = cat
+	pager =
 
 [color]
 
@@ -220,3 +219,5 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[commit]
+	template = /Users/ddavenport/.dotfiles/.git_commit_msg.txt

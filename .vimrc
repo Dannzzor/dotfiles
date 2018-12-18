@@ -28,6 +28,8 @@ Plugin 'steelsojka/deoplete-flow'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'chrisbra/Colorizer'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'gorodinskiy/vim-coloresque.git'
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim'
 endif
@@ -36,6 +38,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " plugin junkyard =============================
+"Plugin 'ap/vim-css-color'
 "Plugin 'ajh17/VimCompletesMe'
 "Plugin 'rstacruz/vim-hyperstyle'
 "Plugin 'fatih/vim-go.git'
@@ -86,6 +89,7 @@ set lazyredraw                           " Don't redraw when we don't have to
 set magic                                " Enable extended regexes
 set mouse+=a                             " Enable mouse in all modes
 set nojoinspaces                         " Only insert single space after a '.', '?', and '!' witha join command
+set noshowmode                           " Hide the '--INSERT--' so we can see autocomplete stufffff
 set nostartofline                        " Don't reset the cursor to the start of the line when moving around
 set noswapfile                           " Do not use swap files
 set nowrap                               " Do not wrap lines
@@ -278,6 +282,7 @@ let g:tmuxline_preset = {
       \'x'    : '#(tmux-mem-cpu-load --interval 2)',
       \'y'    : '#(uptime | cut -d " " -f 1,2,3)',
       \'z'    : 'DANNZZOR'}
+
 "let g:tmuxline_preset = {
 "      \'a'    : '#(whoami)',
 "      \'b'    : '#W',
@@ -321,14 +326,28 @@ let g:ale_echo_msg_warning_str = '△'
 let g:ale_echo_msg_error_str = '⨯'
 let g:ale_echo_msg_format = '[%severity% %linter%] %s'
 let g:ale_linters = {
-\ 'javascript': ['flow', 'jshint'],
+\ 'javascript': ['flow', 'eslint'],
 \ 'typescript': ['flow', 'tslint']
 \}
 
+let g:ale_set_highlights = 1
+let g:ale_set_signs = 0
+
 " ALE fix on save
-let g:ale_fix_on_save = 1
+"let g:ale_fix_on_save = 1
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-" deoplete
+" deoplete (autocomplete) ======================
 let g:deoplete#enable_at_startup = 1
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" tern
+if exists('g:plugs["tern_for_vim"]')
+  let g:tern_show_argument_hints = 'on_hold'
+  let g:tern_show_signature_in_pum = 1
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
+endif
+
+

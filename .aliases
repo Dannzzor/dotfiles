@@ -177,3 +177,5 @@ alias icb="ionic cordova run browser --livereload"
 alias ici="ionic cordova run ios --livereload"
 alias ilab="ionic serve --lab"
 
+# Remove all `node_modules` folders recursively
+alias removepackages='find . -name "node_modules" -type d -prune -exec rm -rf "{}" +'
