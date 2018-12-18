@@ -29,6 +29,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'chrisbra/Colorizer'
 Plugin 'ternjs/tern_for_vim'
+Plugin 'gorodinskiy/vim-coloresque.git'
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim'
 endif
@@ -37,6 +38,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " plugin junkyard =============================
+"Plugin 'ap/vim-css-color'
 "Plugin 'ajh17/VimCompletesMe'
 "Plugin 'rstacruz/vim-hyperstyle'
 "Plugin 'fatih/vim-go.git'
