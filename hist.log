@@ -1,0 +1,341 @@
+    1  htop
+    2  top
+    3  sudo apt-get conky-all
+    4  sudo apt-get install conky-all
+    5  sudo add-apt-repository universe
+    6  sudo apt install gnome-tweak-tool
+    7  gnome-tweaks
+    8  sudo apt install gnome-shell extensions
+    9  sudo apt install gnome-shell-extensions
+   10  gnome-tweaks
+   11  exit
+   12  gnome-tweaks
+   13  sudo apt-get install chrome-gnome-shell
+   14  shell --version
+   15  gnome-shell --version
+   16  gnome-shell-extension --version
+   17  gnome-tweaks
+   18  cp lovelace /usr/share/themes -R
+   19  sudo cp lovelace /usr/share/themes -R
+   20  sudo cp manta /usr/share/themes -R
+   21  ag linebit
+   22  sudo apt install silversearcher-ag
+   23  ag linebit
+   24  sudo apt-get install xcopy
+   25  ssh-keygen -t rsa -b 4096 -C "ddavenport420@gmail.com"
+   26  eval "$(ssh-agent -s)"
+   27  ssh-add ~/.ssh/id_rsa
+   28  xclip -sel clip < ~/.ssh/id_rsa.pub
+   29  sudo apt install xclip
+   30  xclip -sel clip < ~/.ssh/id_rsa.pub
+   31  ls -a
+   32  mkdir repos
+   33  cd repos
+   34  git clone git@github.com:elenapan/dotfiles.git elena-dotfiles
+   35  sudo apt install git
+   36  git clone git@github.com:elenapan/dotfiles.git elena-dotfiles
+   37  git clone git@github.com:Dannzzor/dotfiles.git
+   38  cd ..
+   39  ls
+   40  ls -a
+   41  cd Templates/
+   42  ls
+   43  ls -a
+   44  cd ..
+   45  cd /usr/share/themes
+   46  ls
+   47  ls -a
+   48  cd Adwaita
+   49  ls
+   50  ls -a
+   51  cd ~
+   52  ls
+   53  cd repos
+   54  cd elena-dotfiles/
+   55  ls
+   56  sudo add-apt-repository ppa:numix/ppa
+   57  sudo apt-get update
+   58  sudo apt-get install numix-icon-theme-circle
+   59  sudo add-apt-repository ppa:docky-core/stable
+   60  sudo apt-get update
+   61  sudo apt-get install docky
+   62  sudo apt remove gnome-shell-extension-ubuntu-dock
+   63  cd ~
+   64  ls -alt
+   65  vim
+   66  vi
+   67  which vi
+   68  vi .bash_prompt
+   69  sudo apt install neovim
+   70  nvim
+   71  nvim .bash_prompt
+   72  cd repos
+   73  cd dotfiles/
+   74  ls
+   75  ls -a
+   76  ls -alt
+   77  cd ..
+   78  mv .bash_prompt .bash_prompt_bak
+   79  ln -s repos/dotfiles/.bash_prompt .
+   80  exit
+   81  source .bash_prompt
+   82  ls
+   83  exit
+   84  ls -alt
+   85  nvim .bash_prompt
+   86  ls -alt
+   87  ls
+   88  node
+   89  cd repos
+   90  ls
+   91  cd dotfiles/
+   92  ls
+   93  git statu
+   94  git status
+   95  cd ..
+   96  (cd /tmp && git clone --depth 1 --config core.autocrlf=false https://github.com/twolfson/sexy-bash-prompt && cd sexy-bash-prompt && make install) && source ~/.bashrc
+   97  sudo apt install make
+   98  (cd /tmp && git clone --depth 1 --config core.autocrlf=false https://github.com/twolfson/sexy-bash-prompt && cd sexy-bash-prompt && make install) && source ~/.bashrc
+   99  cd /tmp/sexy-bash-prompt/
+  100  make install
+  101  colortest -w
+  102  nvim .bashrc
+  103  source .bashrc
+  104  source .bash_profile
+  105  vim .bash_profile
+  106  ls -a
+  107  ln -s repos/dotfiles/.bash_profile .
+  108  ls
+  109  vim .bashrc
+  110  source .bash_profile
+  111  vim .bash_profile
+  112  source .bash_prompt
+  113  vim .bash_prompt
+  114  source .bash_prompt
+  115  :q
+  116  exit
+  117  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+  118  sudo apt install curl
+  119  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+  120  exit
+  121  cd..
+  122  cd ..
+  123  ls
+  124  ls -alt
+  125  cd /usr/
+  126  ls
+  127  cd share
+  128  ls
+  129  cd themes
+  130  ls
+  131  cd lovelace/
+  132  ls
+  133  cd gnome-shell/
+  134  ls
+  135  ls -alt
+  136  vim gnome-shell.css 
+  137  vim gnome-shell.css
+  138  ls
+  139  gsettings set org.gtk.Settings.Debug enable-inspector-keybinding true
+  140  GTK_DEBUG=interactive
+  141  sudo vim gnome-shell.css
+  142  sudo vim gnome-shell-theme.gresource 
+  143  cd /usr/share/themes
+  144  ls
+  145  cd manta
+  146  ls
+  147  cat COPYING 
+  148  ls -a
+  149  vim index.theme 
+  150  cd gnome-shell/
+  151  ls
+  152  ls -alt
+  153  cd assets/
+  154  ls
+  155  cd..
+  156  ls
+  157  ls -alt
+  158  sudo gnome-shell.css
+  159  sudo vim gnome-shell.css
+  160  ls
+  161  cd ..
+  162  ls
+  163  cd gtk-3.22
+  164  ls
+  165  cd ..
+  166  cd love
+  167  cd lovelace/
+  168  ls
+  169  cd gtk-3.22
+  170  ls
+  171  sudo vim gtk.css
+  172  gnome-shell --version
+  173  cd ..
+  174  ls
+  175  cd gtk-3.0
+  176  ls
+  177  sudo vim gtk.css
+  178  cd ..
+  179  ls
+  180  cd gnome-shell/
+  181  ls
+  182  sudo vim gnome-shell.css
+  183  sudo apt-get install htop
+  184  htop
+  185  exit
+  186  cd repos
+  187  cd dotfiles/
+  188  cd ..
+  189  vim .vimrc
+  190  vim .vimrc
+  191  ls -alt
+  192  vim .bashrc
+  193  ls -alt
+  194  ln -s repos/dotfiles/.aliases 
+  195  ls
+  196  ls -a
+  197  ln -s repos/dotfiles/.functions .
+  198  ln -s repos/dotfiles/.exports .
+  199  ln -s repos/dotfiles/.gitconfig .
+  200  ln -s repos/dotfiles/.gitignore .
+  201  ln -s repos/dotfiles/.git_commit_msg.txt .
+  202  ln -s repos/dotfiles/.npmrc .
+  203  ln -s repos/dotfiles/.vimrc .
+  204  vim .vimrc
+  205  cd .nvim
+  206  ls
+  207  ls -alt
+  208  cd .nvim
+  209  cd .config
+  210  ls
+  211  cd nvim
+  212  mkdir nvim
+  213  cd nvim
+  214  ln -s ~/.vimrc init.vim
+  215  ls
+  216  cd ..
+  217  vim .vimrc
+  218  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  219  vim .vimrc
+  220  cd .vim
+  221  ls
+  222  cd bundle/
+  223  ls
+  224  cd ..
+  225  ls
+  226  mkdir colors
+  227  cd colors/
+  228  ln -s ~/repos/dotfiles/colors/ariake.vim 
+  229  vim
+  230  cd ~
+  231  vim .vimrc
+  232  cd .vim
+  233  ls
+  234  mkdir backups
+  235  mkdir swaps
+  236  cd ..
+  237  vim .vimrc
+  238  cd .vim
+  239  ls
+  240  cd col
+  241  cd colors/
+  242  ls
+  243  cd ..
+  244  vim .vimrc
+  245  nvim .vimrc
+  246  vim .vimrc
+  247  vim .vimrcc
+  248  vim .vimrc
+  249  cd .vim
+  250  ag slate
+  251  find slate.vim
+  252  find -r slate.vim
+  253  find --help
+  254  find -name slate
+  255  ls
+  256  cd colors
+  257  ls
+  258  cd..
+  259  cd ..
+  260  ls
+  261  cd ..
+  262  ls
+  263  cd nvim
+  264  cd .config
+  265  ls
+  266  cd nvim
+  267  ls
+  268  cd /usr
+  269  ls
+  270  find -name nvim
+  271  cd /share/nvim
+  272  cd share/nvim
+  273  ls
+  274  cd runtime/
+  275  ls
+  276  cd colors/
+  277  ls
+  278  ln -s ~/repos/dotfiles/colors/ariake.vim .
+  279  sudo ln -s ~/repos/dotfiles/colors/ariake.vim .
+  280  ls -alt
+  281  cd .config
+  282  ls
+  283  find -name xterm
+  284  exit
+  285  vim .vimrc
+  286  sudo apt-get install xterm
+  287  sudo apt-get install termite
+  288  echo -e "\e[3m is this italics? \e[23m"
+  289  curl https://gist.githubusercontent.com/sadsfae/0b4dd18670639f7dce941a1b2a9e4e9e/raw/908b48e6b6370da0568be8d138966c60240a50dd/xterm-256color-italic.terminfo > xterm-256color-italic
+  290  tic xterm-256color-italic 
+  291  echo "export TERM=xterm-256color-italic" >> ~/.bashrc
+  292  source ~/.bashrc
+  293  vim .vimrc
+  294  exit
+  295  ls
+  296  vim .vimrc
+  297  vim .vimrc
+  298  vim .bashrc
+  299  vim .vimrc
+  300  exit
+  301  sudo apt-get install nodejs npm
+  302  vim .vimrc
+  303  exit
+  304  history
+  305  history | grep sudo apt
+  306  history | grep 'sudo apt'
+  307  vim .vimrc
+  308  ls
+  309  cd repos
+  310  ls
+  311  git clone git@github.com:enspiresoftware/splxcp-react.git
+  312  ls
+  313  cd splxcp-react/
+  314  cd src/components/
+  315  ls
+  316  cd Widget
+  317  ls
+  318  vim Widget.js
+  319  ls
+  320  cd repos
+  321  ls
+  322  cd dotfiles/
+  323  ls
+  324  cd..
+  325  cd ..
+  326  ls -a
+  327  cd .config/
+  328  ls
+  329  ls -alt
+  330  cd gtk-3.0/
+  331  ls
+  332  ls -a
+  333  cd ..
+  334  cd nvim
+  335  ls
+  336  ls -a
+  337  cd ..
+  338  history
+  339  cd repos
+  340  cd dotfiles/
+  341  history >> hist.log

@@ -20,26 +20,6 @@ case $- in
 esac
 
 
-# generic colouriser
-GRC=`which grc`
-if [ "$TERM" != dumb ] && [ -n "$GRC" ]
-    then
-        alias colourify="$GRC -es --colour=auto"
-        alias configure='colourify ./configure'
-        for app in {diff,make,gcc,g++,ping,traceroute}; do
-            alias "$app"='colourify '$app
-    done
-fi
-
-# highlighting inside manpages and elsewhere
-export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
-export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
-export LESS_TERMCAP_me=$'\E[0m'           # end mode
-export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
-export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\E[0m'           # end underline
-export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
-
 ##
 ## gotta tune that bash_history…
 ##
@@ -65,15 +45,15 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 ## hooking in other apps…
 ##
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Load RVM into a shell session *as a function*
 # http://stackoverflow.com/questions/13804382/how-to-automatically-run-bin-bash-login-automatically-in-the-embeded-termin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # Point our gems to the ~/.gems folder
-export GEM_HOME=~/.gems
+#export GEM_HOME=~/.gems
 
 
 # init z   https://github.com/rupa/z
@@ -84,21 +64,6 @@ export GEM_HOME=~/.gems
 ##
 ## Completion…
 ##
-
-# bash completion.
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
-
-# homebrew completion
-if  which brew > /dev/null; then
-    source "$(brew --prefix)/etc/bash_completion.d/brew";
-fi;
-
-# hub completion
-if  which hub > /dev/null; then
-    source "$(brew --prefix)/etc/bash_completion.d/hub.bash_completion.sh";
-fi;
 
 # Enable tab completion for `g` by marking it as an alias for `git`
 if type __git_complete &> /dev/null; then
@@ -138,8 +103,6 @@ shopt -s cdspell;
 # Automatically set the env vars for the default docker container on shell load
 #eval $(docker-machine env default);
 
-# colors
-LS_COLORS=$LS_COLORS:'di=0;35:' ; export LS_COLORS
 
 # automatically set docker env vars for default container on new shell
 #eval $(docker-machine env default);
