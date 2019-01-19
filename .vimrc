@@ -11,10 +11,8 @@ Plugin 'scrooloose/nerdtree.git'
 Plugin 'kien/ctrlp.vim.git'
 Plugin 'moll/vim-bbye.git'
 Plugin 'tpope/vim-fugitive.git'
-Plugin 'bling/vim-airline.git'
 Plugin 'rking/ag.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'edkolev/tmuxline.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'godlygeek/tabular'
 Plugin 'chip/vim-fat-finger.git'
@@ -38,6 +36,8 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " plugin junkyard =============================
+"Plugin 'edkolev/tmuxline.vim'
+"Plugin 'bling/vim-airline.git'
 "Plugin 'ap/vim-css-color'
 "Plugin 'ajh17/VimCompletesMe'
 "Plugin 'rstacruz/vim-hyperstyle'
@@ -54,7 +54,6 @@ filetype plugin indent on    " required
 " Settings ====================================
 set path+=**                             " Set path search recursive
 set shortmess=a                          " Use shorter messages to avoid the click enter to continue warning
-set path+=**                             " Set path search recursive
 set autoindent                           " Copy indent from last line when starting new line
 set backspace=indent,eol,start
 set colorcolumn=120                      " 120 width guideline
@@ -125,7 +124,6 @@ endif
 
 
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
-
 set wildignore+=.DS_Store,*/bower_components/*,*/node_modules/*
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
@@ -138,7 +136,6 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
-
 
 
 " Config ====================================
@@ -234,9 +231,6 @@ if &term =~ '^screen'
   set ttymouse=xterm2
 endif
 
-" powerline stuff
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
 
 " Theme stuff =============================
 " install themes in .vim/colors
@@ -261,37 +255,14 @@ endif
 " --- ariake dark ---
 colorscheme ariake
 let g:ariake_allow_italics=1
-set background=dark
+"set background=dark
 " ----------------
 
+"colorscheme slate
 "colorscheme hydrangea
 "colorscheme blame
 "colorscheme sidonia
 "colorscheme dannzzor
-
-
-" set a transparent background manually
-hi Normal guibg=NONE ctermbg=NONE
-"==========================================
-
-let g:airline_theme='dannzzor'
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'b'    : '#W',
-      \'c'    : '#(date)',
-      \'x'    : '#(tmux-mem-cpu-load --interval 2)',
-      \'y'    : '#(uptime | cut -d " " -f 1,2,3)',
-      \'z'    : 'DANNZZOR'}
-
-"let g:tmuxline_preset = {
-"      \'a'    : '#(whoami)',
-"      \'b'    : '#W',
-"      \'c'    : '#H',
-"      \'win'  : '#I #W',
-"      \'cwin' : '#I #W',
-"      \'x'    : '#(tmux-mem-cpu-load --interval 2)',
-"      \'y'    : '%a %R',
-"      \'z'    : '#(ip)'}
 
 
 noremap <Up> <NOP>
@@ -350,4 +321,5 @@ if exists('g:plugs["tern_for_vim"]')
   autocmd FileType javascript setlocal omnifunc=tern#Complete
 endif
 
-
+" Italics _____ this has to go at the end for some reason /shrug
+highlight Comment gui=italic
