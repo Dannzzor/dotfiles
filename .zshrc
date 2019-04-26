@@ -113,3 +113,5 @@ for file in ~/.{extra,exports,aliases,functions}; do
 done
 unset file
 
+export PATH=$PATH:/Users/ddavenport
+export SLACK_THEME_SHELL_PROFILE="/Users/ddavenport/.zshrc"
