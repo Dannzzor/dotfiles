@@ -31,6 +31,7 @@ Plugin 'chrisbra/Colorizer'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'gorodinskiy/vim-coloresque.git'
 Plugin 'airblade/vim-rooter'
+Plugin 'prettier/vim-prettier'
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim'
 endif
