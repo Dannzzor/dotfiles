@@ -30,6 +30,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'chrisbra/Colorizer'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'gorodinskiy/vim-coloresque.git'
+Plugin 'airblade/vim-rooter'
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim'
 endif
@@ -54,7 +55,6 @@ filetype plugin indent on    " required
 " Settings ====================================
 set path+=**                             " Set path search recursive
 set shortmess=a                          " Use shorter messages to avoid the click enter to continue warning
-set path+=**                             " Set path search recursive
 set autoindent                           " Copy indent from last line when starting new line
 set backspace=indent,eol,start
 set colorcolumn=120                      " 120 width guideline
@@ -175,7 +175,12 @@ noremap <Leader>. :Ag<Space>
 "noremap <Leader>j :JSHint<CR>
 " set runtimepath+=~/.vim/bundle/jshint2.vim/
 
-map <Leader>/ :NERDTreeToggle<CR>
+" map <Leader>/ :NERDTreeToggle<CR>
+"map <Leader>/ :NERDTreeFind<CR>
+" this toggles nertree, however it will bring up the exact file that is open,
+" if one is open, otherwise it will just open the nerdtree at the root.
+" it will also toggle it closed if its open
+nnoremap <silent> <expr> <Leader>/ g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 "map <Leader>/ :Vexplore<CR>
 "map <leader>/ :call VexToggle(getcwd())<CR>
 
@@ -278,10 +283,12 @@ let g:airline_theme='dannzzor'
 let g:tmuxline_preset = {
       \'a'    : '#S',
       \'b'    : '#W',
-      \'c'    : '#(date)',
-      \'x'    : '#(tmux-mem-cpu-load --interval 2)',
-      \'y'    : '#(uptime | cut -d " " -f 1,2,3)',
+      \'c'    : '#(tmux-mem-cpu-load --interval 2)',
+      \'x'    : '#(uptime | cut -d " " -f 1,2,3)',
+      \'y'    : '🦋  Be Excellent Today! 🦋 ',
       \'z'    : 'DANNZZOR'}
+
+" \'c'    : '#(date)',
 
 "let g:tmuxline_preset = {
 "      \'a'    : '#(whoami)',
