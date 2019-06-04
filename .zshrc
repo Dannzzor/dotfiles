@@ -102,10 +102,10 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Load pyenv for loading alternate versions of python
-export PYENV_ROOT="$HOME"/.pyenv
-export PATH="$PYENV_ROOT"/bin:"$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#export PYENV_ROOT="$HOME"/.pyenv
+#export PATH="$PYENV_ROOT"/bin:"$PATH"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 # Load my custom stuff from other files
 for file in ~/.{extra,exports,aliases,functions}; do
@@ -113,3 +113,5 @@ for file in ~/.{extra,exports,aliases,functions}; do
 done
 unset file
 
+export PATH=$PATH:/Users/danny
+export SLACK_THEME_SHELL_PROFILE="/Users/danny/.zshrc"
