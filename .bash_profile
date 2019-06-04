@@ -144,3 +144,5 @@ LS_COLORS=$LS_COLORS:'di=0;35:' ; export LS_COLORS
 # automatically set docker env vars for default container on new shell
 #eval $(docker-machine env default);
 
+export PATH=$PATH:/Users/ddavenport
+export SLACK_THEME_SHELL_PROFILE="/Users/ddavenport/.bash_profile"
