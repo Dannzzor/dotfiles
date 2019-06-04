@@ -24,20 +24,21 @@ Plugin 'rstacruz/vim-closer'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'mhartington/nvim-typescript'
 Plugin 'w0rp/ale'
-Plugin 'steelsojka/deoplete-flow'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'chrisbra/Colorizer'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'gorodinskiy/vim-coloresque.git'
-if has('nvim')
-  Plugin 'Shougo/deoplete.nvim'
-endif
+Plugin 'prettier/vim-prettier'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " plugin junkyard =============================
+"Plugin 'steelsojka/deoplete-flow'
+"if has('nvim')
+"  Plugin 'Shougo/deoplete.nvim'
+"endif
 "Plugin 'ap/vim-css-color'
 "Plugin 'ajh17/VimCompletesMe'
 "Plugin 'rstacruz/vim-hyperstyle'
@@ -339,9 +340,9 @@ let g:ale_set_signs = 0
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " deoplete (autocomplete) ======================
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 " deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " tern
 if exists('g:plugs["tern_for_vim"]')
