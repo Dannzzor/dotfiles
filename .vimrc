@@ -55,6 +55,7 @@ filetype plugin indent on    " required
 
 " Settings ====================================
 set path+=**                             " Set path search recursive
+set clipboard=unnamed                    " Set clipboard to be able to use yanks
 set shortmess=a                          " Use shorter messages to avoid the click enter to continue warning
 set autoindent                           " Copy indent from last line when starting new line
 set backspace=indent,eol,start
