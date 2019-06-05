@@ -32,14 +32,14 @@ Plugin 'gorodinskiy/vim-coloresque.git'
 Plugin 'airblade/vim-rooter'
 Plugin 'prettier/vim-prettier'
 Plugin 'steelsojka/deoplete-flow'
+if has('nvim')
+  Plugin 'Shougo/deoplete.nvim'
+endif
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " plugin junkyard =============================
-"if has('nvim')
-"  Plugin 'Shougo/deoplete.nvim'
-"endif
 "Plugin 'ap/vim-css-color'
 "Plugin 'ajh17/VimCompletesMe'
 "Plugin 'rstacruz/vim-hyperstyle'
