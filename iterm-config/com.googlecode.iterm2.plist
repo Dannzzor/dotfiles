@@ -75,16 +75,18 @@
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>-1563 217 612 337 -1920 0 1920 1058 </string>
+	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
+	<string>412 527 616 174 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>-2070 1308 620 392 -3040 540 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>-1048 1319 918 452 -1837 900 2560 1417 </string>
+	<string>1512 1325 918 452 723 900 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1386 877 0 0 1440 877 </string>
+	<string>3 306 1042 571 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>3 0 1274 877 0 0 1440 877 </string>
+	<string>-890 1399 1026 860 -1837 900 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 0 1432 877 0 0 1440 877 </string>
+	<string>-1837 1595 650 452 -1837 900 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>-2262 988 962 605 -3040 540 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
@@ -765,7 +767,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.080698762690355322</real>
+			<real>0.0</real>
 			<key>Unicode Version</key>
 			<integer>8</integer>
 			<key>Unlimited Scrollback</key>
@@ -1509,7 +1511,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-02-13T12:25:04Z</date>
+	<date>2019-04-20T01:44:17Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -1525,7 +1527,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.2.7</string>
+	<string>3.2.8</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

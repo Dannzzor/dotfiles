@@ -67,6 +67,7 @@ ZSH_THEME="avit"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  globalias
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -115,3 +116,4 @@ unset file
 
 export PATH=$PATH:/Users/ddavenport
 export SLACK_THEME_SHELL_PROFILE="/Users/ddavenport/.zshrc"
+
