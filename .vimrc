@@ -24,7 +24,6 @@ Plugin 'rstacruz/vim-closer'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'mhartington/nvim-typescript'
 Plugin 'w0rp/ale'
-Plugin 'steelsojka/deoplete-flow'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'chrisbra/Colorizer'
@@ -32,14 +31,15 @@ Plugin 'ternjs/tern_for_vim'
 Plugin 'gorodinskiy/vim-coloresque.git'
 Plugin 'airblade/vim-rooter'
 Plugin 'prettier/vim-prettier'
-if has('nvim')
-  Plugin 'Shougo/deoplete.nvim'
-endif
+Plugin 'steelsojka/deoplete-flow'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " plugin junkyard =============================
+"if has('nvim')
+"  Plugin 'Shougo/deoplete.nvim'
+"endif
 "Plugin 'ap/vim-css-color'
 "Plugin 'ajh17/VimCompletesMe'
 "Plugin 'rstacruz/vim-hyperstyle'
@@ -322,6 +322,9 @@ inoremap ./<C-X><C-F> <C-O>:lcd %:p:h<CR><C-X><C-F>
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#trailing_comma = 'none'
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+
 
 " ALE configuration
 let g:ale_fixers = {

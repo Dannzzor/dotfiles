@@ -220,4 +220,4 @@
 	required = true
 	clean = git-lfs clean -- %f
 [commit]
-	template = /Users/ddavenport/.git_commit_msg_splx
+	template = ~/.dotfiles/.git_commit_msg.txt
