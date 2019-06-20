@@ -67,6 +67,7 @@ ZSH_THEME="avit"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  globalias
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -115,3 +116,10 @@ unset file
 
 export PATH=$PATH:/Users/ddavenport
 export SLACK_THEME_SHELL_PROFILE="/Users/ddavenport/.zshrc"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# Load RVM into a shell session *as a function*
+# http://stackoverflow.com/questions/13804382/how-to-automatically-run-bin-bash-login-automatically-in-the-embeded-termin
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
