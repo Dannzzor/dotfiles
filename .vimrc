@@ -276,6 +276,9 @@ set background=dark
 "colorscheme sidonia
 "colorscheme dannzzor
 
+" Setup TODO: and FIXME: highlighting
+syn match   myTodo   contained   "\<\(TODO\|FIXME\):"
+hi def link myTodo Todo
 
 " set a transparent background manually
 hi Normal guibg=NONE ctermbg=NONE
