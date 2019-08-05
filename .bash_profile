@@ -65,8 +65,13 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 ## hooking in other apps…
 ##
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+#export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="${XDG_CONFIG_HOME/:-$HOME/.}nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+## Bash complete
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 
 # Load RVM into a shell session *as a function*
 # http://stackoverflow.com/questions/13804382/how-to-automatically-run-bin-bash-login-automatically-in-the-embeded-termin
@@ -146,3 +151,5 @@ LS_COLORS=$LS_COLORS:'di=0;35:' ; export LS_COLORS
 
 export PATH=$PATH:/Users/ddavenport
 export SLACK_THEME_SHELL_PROFILE="/Users/ddavenport/.bash_profile"
+
+
