@@ -31,6 +31,7 @@ Plugin 'ternjs/tern_for_vim'
 Plugin 'gorodinskiy/vim-coloresque.git'
 Plugin 'airblade/vim-rooter'
 Plugin 'prettier/vim-prettier'
+Plugin 'steelsojka/deoplete-flow'
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim'
 endif
@@ -39,7 +40,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " plugin junkyard =============================
-"Plugin 'steelsojka/deoplete-flow'
 "if has('nvim')
 "  Plugin 'Shougo/deoplete.nvim'
 "endif
@@ -351,9 +351,11 @@ let g:ale_set_signs = 0
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " deoplete (autocomplete) ======================
-"let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
+let g:python3_host_prog="/usr/local/bin/python3"
+let g:python_host_prog="/usr/bin/python"
 " deoplete tab-complete
-"inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " tern
 if exists('g:plugs["tern_for_vim"]')
