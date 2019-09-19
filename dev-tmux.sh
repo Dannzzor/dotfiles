@@ -1,5 +1,6 @@
 #!/bin/sh
-tmux new -s 'dev' -d 'vim'
-tmux split-window -v -p 20 
-tmux split-window -h -d 'htop'
+tmux new -s 'dev' -d
+tmux split-window -v -p 10
+tmux split-window -h -p 60
+tmux split-window -h -p 30
 tmux a -t 'dev'
