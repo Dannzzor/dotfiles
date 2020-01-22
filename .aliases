@@ -3,6 +3,7 @@ alias cd..="cd .."
 alias cd...="cd ../.."
 alias cd....="cd ../../.."
 alias cd.....="cd ../../../.."
+#lol changes
 
 alias ..="cd .."
 alias ...="cd ../.."
