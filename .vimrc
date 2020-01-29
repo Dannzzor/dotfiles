@@ -33,6 +33,7 @@ Plugin 'airblade/vim-rooter'
 Plugin 'prettier/vim-prettier'
 Plugin 'steelsojka/deoplete-flow'
 Plugin 'ap/vim-css-color'
+
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim'
 endif
@@ -280,6 +281,9 @@ set background=dark
 "colorscheme sidonia
 "colorscheme dannzzor
 
+" Setup TODO: and FIXME: highlighting
+syn match   myTodo   contained   "\<\(TODO\|FIXME\):"
+hi def link myTodo Todo
 
 " set a transparent background manually
 hi Normal guibg=NONE ctermbg=NONE
@@ -327,6 +331,9 @@ inoremap ./<C-X><C-F> <C-O>:lcd %:p:h<CR><C-X><C-F>
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#trailing_comma = 'none'
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+
 
 " ALE configuration
 let g:ale_fixers = {

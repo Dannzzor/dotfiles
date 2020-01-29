@@ -3,6 +3,7 @@ alias cd..="cd .."
 alias cd...="cd ../.."
 alias cd....="cd ../../.."
 alias cd.....="cd ../../../.."
+#lol changes
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -33,8 +34,8 @@ alias ci='code-insiders'
 alias ctags="`brew --prefix`/bin/ctags"
 alias gcs="git checkout SCP-"
 alias gcsn="git checkout -b SCP-"
-
 alias devmux="sh ~/repos/dotfiles/dev-tmux.sh"
+alias tm="tmux a -t"
 
 # first install silver searcher: brew install the_silver_searcher
 # this just defaults it to follow symlinks and also search hidden files
@@ -183,3 +184,12 @@ alias ilab="ionic serve --lab"
 
 # Remove all `node_modules` folders recursively
 alias removepackages='find . -name "node_modules" -type d -prune -exec rm -rf "{}" +'
+
+
+# Totally pointless, but amazing
+alias sj1="say -v Junior I like to eat tidepods" 
+alias sj2="say -v Junior I'm a helicopter sf sf sf sf sf sf sf sf sf sf sf sf sf" 
+alias sj3="say -v Junior wat?" 
+alias sj4="say -v Audrey what?" 
+alias sj5="say -v Audrey Mierde!" 
+alias sj6="say -v Junior I am a helicopter! swaswaswaswaswaswaswaswaswaswaswaswa" 
