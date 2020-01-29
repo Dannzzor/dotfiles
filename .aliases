@@ -34,6 +34,7 @@ alias ci='code-insiders'
 alias ctags="`brew --prefix`/bin/ctags"
 alias gcs="git checkout SCP-"
 alias gcsn="git checkout -b SCP-"
+alias devmux="sh ~/repos/dotfiles/dev-tmux.sh"
 alias tm="tmux a -t"
 
 # first install silver searcher: brew install the_silver_searcher
