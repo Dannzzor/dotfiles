@@ -394,7 +394,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('Underlined',     '',              '',          'underline')
   call <sid>X('Ignore',         '',              '',          '')
   call <sid>X('Error',          s:hue_5,         s:syntax_bg, 'bold')
-  call <sid>X('Todo',           s:hue_3,         s:syntax_bg, '')
+  call <sid>X('Todo',           s:syntax_bg,         s:wtf, 'bold')
   " }}}
 
   " Diff highlighting -------------------------------------------------------{{{
@@ -423,7 +423,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('cStructure',         s:hue_3,  '', '')
   call <sid>X('cOperator',          s:hue_3,  '', '')
   call <sid>X('cStatement',         s:hue_3,  '', '')
-  call <sid>X('cTODO',              s:hue_3,  '', '')
+  call <sid>X('cTODO',              s:syntax_bg,  's:wtf', 'bold')
   call <sid>X('cConstant',          s:hue_6,  '', '')
   call <sid>X('cSpecial',           s:hue_1,  '', '')
   call <sid>X('cSpecialCharacter',  s:hue_1,  '', '')
