@@ -109,6 +109,7 @@ set smartcase                            " Ignore ignorecase if search contains 
 set smarttab                             " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
 set softtabstop=2                        " Tab key results in 2 spaces
 set shiftwidth=2                         " Indintation
+set showcmd                              " show commands I guess ???
 set splitbelow                           " New window goes below
 set splitright                           " New windows goes right
 set tabstop=2                            " Hitting <Tab> will produce 2 spaces
@@ -276,6 +277,7 @@ let g:ariake_allow_italics=1
 set background=dark
 " ----------------
 
+"colorscheme ariake-dark
 "colorscheme hydrangea
 "colorscheme blame
 "colorscheme sidonia
