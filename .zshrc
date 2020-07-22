@@ -132,6 +132,10 @@ export NVM_DIR="$HOME/.nvm"
 # http://stackoverflow.com/questions/13804382/how-to-automatically-run-bin-bash-login-automatically-in-the-embeded-termin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# Hook in direnv
+# https://direnv.net/docs/installation.html
+eval "$(direnv hook zsh)"
+
 # vim bindings
 bindkey -v
 # enable CTRL-R history lookup
