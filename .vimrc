@@ -122,6 +122,11 @@ set wildmenu                             " Hitting TAB in command mode will show
 set wildmode=list:longest                " Complete only until point of ambiguity
 set winminheight=0                       " Allow splits to be reduced to a single line
 set wrapscan                             " Searches wrap around end of file
+set spelllang=en                         " Set spell check language to english
+set spellfile=$HOME/Dropbox/vim/spell/en.utf-8.add " Set spell check file location
+set spell                                " Turn ON spell checking. `]s` to jump to next spellcheck word. `zg` adds word
+
+
 
 if has('nvim')
   " some neovim specific configs
