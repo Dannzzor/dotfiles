@@ -109,6 +109,7 @@ set smartcase                            " Ignore ignorecase if search contains 
 set smarttab                             " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
 set softtabstop=2                        " Tab key results in 2 spaces
 set shiftwidth=2                         " Indintation
+set showcmd                              " show commands I guess ???
 set splitbelow                           " New window goes below
 set splitright                           " New windows goes right
 set tabstop=2                            " Hitting <Tab> will produce 2 spaces
@@ -121,6 +122,11 @@ set wildmenu                             " Hitting TAB in command mode will show
 set wildmode=list:longest                " Complete only until point of ambiguity
 set winminheight=0                       " Allow splits to be reduced to a single line
 set wrapscan                             " Searches wrap around end of file
+set spelllang=en                         " Set spell check language to english
+set spellfile=$HOME/Dropbox/vim/spell/en.utf-8.add " Set spell check file location
+set spell                                " Turn ON spell checking. `]s` to jump to next spellcheck word. `zg` adds word
+
+
 
 if has('nvim')
   " some neovim specific configs
@@ -276,6 +282,7 @@ let g:ariake_allow_italics=1
 set background=dark
 " ----------------
 
+"colorscheme ariake-dark
 "colorscheme hydrangea
 "colorscheme blame
 "colorscheme sidonia

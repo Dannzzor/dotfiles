@@ -7,8 +7,6 @@ export ZSH="$HOME"/.oh-my-zsh
 # history
 SAVEHIST=100000
 
-# vim bindings
-bindkey -v
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -68,6 +66,7 @@ ZSH_THEME="avit"
 plugins=(
   git
   globalias
+  autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -132,3 +131,12 @@ export NVM_DIR="$HOME/.nvm"
 # Load RVM into a shell session *as a function*
 # http://stackoverflow.com/questions/13804382/how-to-automatically-run-bin-bash-login-automatically-in-the-embeded-termin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Hook in direnv
+# https://direnv.net/docs/installation.html
+eval "$(direnv hook zsh)"
+
+# vim bindings
+bindkey -v
+# enable CTRL-R history lookup
+bindkey '^R' history-incremental-search-backward
