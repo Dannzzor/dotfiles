@@ -302,7 +302,7 @@ let g:tmuxline_preset = {
       \'b'    : '#W',
       \'c'    : '#(tmux-mem-cpu-load --interval 2)',
       \'x'    : '#(uptime | cut -d " " -f 1,2,3)',
-      \'y'    : '🦋  Be Excellent Today! 🦋 ',
+      \'y'    : '🦋  Be Excellent Toda!y! 🦋 ',
       \'z'    : 'DANNZZOR'}
 
 " \'c'    : '#(date)',
