@@ -201,3 +201,12 @@ function docker_clean() {
   docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm
 }
 
+# youtube-dl 
+# https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme
+getplaylist() {
+  youtube-dl -f m4a -o '~/Music/%(playlist)s/%(title)s.%(ext)s' -i --add-metadata "$@"
+}
+
+getsong() {
+  youtube-dl -f m4a -o '~/Music/YOUTUBE/%(title)s.%(ext)s' -i --add-metadata "$@"
+}
