@@ -36,6 +36,7 @@ alias gcs="git checkout SCP-"
 alias gcsn="git checkout -b SCP-"
 alias devmux="sh ~/repos/dotfiles/dev-tmux.sh"
 alias tm="tmux a -t"
+alias YOLO="git push -f"
 
 # first install silver searcher: brew install the_silver_searcher
 # this just defaults it to follow symlinks and also search hidden files
@@ -193,5 +194,10 @@ alias sj3="say -v Junior wat?"
 alias sj4="say -v Audrey what?" 
 alias sj5="say -v Audrey Mierde!" 
 alias sj6="say -v Junior I am a helicopter! swaswaswaswaswaswaswaswaswaswaswaswa" 
+
+# PostgreSQL
+alias pgstart="sudo launchctl start 'org.2ndQ.postgresql-13'"
+alias pgstop="sudo launchctl stop 'org.2ndQ.postgresql-13'"
+alias pgconnect="/Applications/2ndQuadrant/PostgreSQL/13/bin/psql -U postgres -d postgres -p 5432"
 
 
