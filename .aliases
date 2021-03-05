@@ -18,7 +18,7 @@ alias mv='mv -v'
 alias cp='cp -v'
 
 # Shortcuts
-alias vim="nvim"
+alias vim="nvim -i NONE"
 alias vimdiff="nvim -d"
 alias cls="clear"
 alias cra="create-react-app"
