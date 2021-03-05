@@ -1,3 +1,6 @@
+# temp updating path here, need to move over my .extra file from old mac
+export PATH=~/.config/nvim/bin:$PATH
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -66,8 +69,8 @@ ZSH_THEME="avit"
 plugins=(
   git
   globalias
-  autosuggestions
 )
+  #autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 

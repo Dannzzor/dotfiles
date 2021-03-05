@@ -367,7 +367,7 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " deoplete (autocomplete) ======================
 let g:deoplete#enable_at_startup = 1
-let g:python3_host_prog="/usr/local/bin/python3"
+let g:python3_host_prog="/usr/bin/python3"
 let g:python_host_prog="/usr/bin/python"
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
