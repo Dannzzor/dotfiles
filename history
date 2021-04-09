@@ -1,0 +1,84 @@
+# setup github and ssh
+ls -al ~/.ssh
+ssh-keygen -t ed25519 -C "ddavenport420@gmail.com"
+eval "$(ssh-agent -s)"
+touch ~/.ssh/config
+
+vim config # copy vim config over here
+
+ssh-add -K ~/.ssh/id_ed25519
+
+# copy ssh over and paste in github
+pbcopy < ~/.ssh/id_ed25519.pub
+
+# install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# install NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+# install neovim
+brew install neovim
+
+# install tmux
+brew install tmux
+
+mkdir ~/repos
+
+git clone git@github.com:Dannzzor/dotfiles.git ~/repos/dotfiles
+
+ln -s ~/repos/dotfiles/.zshrc ~
+ln -s ~/repos/dotfiles/.aliases ~
+ln -s ~/repos/dotfiles/.functions ~
+ln -s ~/repos/dotfiles/.gitconfig ~
+ln -s ~/repos/dotfiles/.gitignore  ~
+ln -s ~/repos/dotfiles/.git-completion.bash  ~
+ln -s ~/repos/dotfiles/.ignore  ~
+ln -s ~/repos/dotfiles/.exports  ~
+ln -s ~/repos/dotfiles/.tmux.conf  ~
+
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"\n\n
+
+nvm install node
+npm install -global git-open
+npm install -global git-recent
+
+mkdir -p ~/.config/nvim/ && xargs ln -s ~/repos/dotfiles/.vimrc ~/.config/nvim/init.vim
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/vim/bundle/Vundle.vim\n\n
+
+# Here you need to open nvim and do :PluginInstall
+#
+ln -s ~/repos/dotfiles/colors/airline/dannzzor.vim ~/.vim/bundle/vim-airline/autoload/airline/themes
+
+# setup nvim color schemes
+mkdir -p ~/.config/nvim/colors
+
+ln -s ~/repos/dotfiles/colors/ariake.vim ~/.config/nvim/colors/
+ln -s ~/repos/dotfiles/colors/dannzzor.vim ~/.config/nvim/colors/
+ln -s ~/repos/dotfiles/colors/dannzzor-one.vim ~/.config/nvim/colors/
+ln -s ~/repos/dotfiles/colors/dannzzor-two.vim ~/.config/nvim/colors/
+ln -s ~/repos/dotfiles/colors/ariake-darik.vim ~/.config/nvim/colors/
+ln -s ~/repos/dotfiles/colors/atom.vim ~/.config/nvim/colors/
+ln -s ~/repos/dotfiles/colors/one.vim ~/.config/nvim/colors/
+ln -s ~/repos/dotfiles/colors/atom-dark.vim ~/.config/nvim/colors/
+ln -s ~/repos/dotfiles/colors/one-dark.vim ~/.config/nvim/colors/
+ln -s ~/repos/dotfiles/colors/OceanicNext.vim ~/.config/nvim/colors/
+ln -s ~/repos/dotfiles/colors/OceanicNextLight.vim ~/.config/nvim/colors/
+
+mkdir -p ~/.vim/backups
+mkdir -p ~/.vim/swaps
+mkdir -p ~/.vim/undo
+
+sh ~/repos/dotfiles/install-xterm-tmux-colors.sh
+
+npm install -g typescript
+
+npm install -g neovim
+sudo pip3 install pynvim
+sudo pip3 install --upgrade pip
+
+# not sure if this helped anything
+sudo chown -R dannzzor ~/local/*
+source .zshrc
