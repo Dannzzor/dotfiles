@@ -177,7 +177,12 @@
 [merge]
 
   # Include summaries of merged commits in newly created merge commit messages
-  log = true
+  log = false
+
+[pull]
+
+  # pull merge strategy.
+  rebase = true
 
 [push]
 
