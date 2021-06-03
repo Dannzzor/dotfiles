@@ -26,9 +26,7 @@ Plugin 'mhartington/nvim-typescript'
 Plugin 'w0rp/ale'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-"Plugin 'chrisbra/Colorizer'
 Plugin 'ternjs/tern_for_vim'
-"Plugin 'gorodinskiy/vim-coloresque.git'
 Plugin 'airblade/vim-rooter'
 Plugin 'prettier/vim-prettier'
 Plugin 'steelsojka/deoplete-flow'
@@ -42,9 +40,8 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " plugin junkyard =============================
-"if has('nvim')
-"  Plugin 'Shougo/deoplete.nvim'
-"endif
+"Plugin 'chrisbra/Colorizer'
+"Plugin 'gorodinskiy/vim-coloresque.git'
 "Plugin 'ap/vim-css-color'
 "Plugin 'ajh17/VimCompletesMe'
 "Plugin 'rstacruz/vim-hyperstyle'
@@ -302,7 +299,7 @@ let g:tmuxline_preset = {
       \'b'    : '#W',
       \'c'    : '#(tmux-mem-cpu-load --interval 2)',
       \'x'    : '#(uptime | cut -d " " -f 1,2,3)',
-      \'y'    : '🦋  Be Excellent Toda!y! 🦋 ',
+      \'y'    : '🦋  Be Excellent Today! 🦋 ',
       \'z'    : 'DANNZZOR'}
 
 " \'c'    : '#(date)',
