@@ -31,6 +31,7 @@ Plugin 'airblade/vim-rooter'
 Plugin 'prettier/vim-prettier'
 Plugin 'steelsojka/deoplete-flow'
 Plugin 'ap/vim-css-color'
+Plugin 'tpope/vim-surround'
 
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim'
