@@ -1,3 +1,5 @@
+ZSH_DISABLE_COMPFIX=true;
+
 # temp updating path here, need to move over my .extra file from old mac
 export PATH=~/.config/nvim/bin:$PATH
 export PATH=~/.mongo/mongodb/bin:$PATH
