@@ -26,8 +26,11 @@
   # View the current working tree status using the short format
   s = status -s
 
-  # Update all submodules
+  # Init all submodules
   sub = submodule update --init --recursive
+
+  # Update submoule to lates, and merge in changes
+  submerge = submodule update --remote --merge
 
   # Switch to a branch, creating it if necessary
   go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
