@@ -47,6 +47,15 @@
   # Commit all changes
   ca = !git add -A && git commit -av
 
+  # Checkout new branch
+  cb = checkout -b
+
+  # Checkout
+  co = checkout 
+
+  # Cherry pick
+  cp = cherry-pick 
+
   # Update all submodules
   sub = submodule update --init --recursive
 
