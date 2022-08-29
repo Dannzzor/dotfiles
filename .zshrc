@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 ZSH_DISABLE_COMPFIX=true;
 
 # temp updating path here, need to move over my .extra file from old mac
@@ -139,3 +141,9 @@ export NVM_DIR="$HOME/.nvm"
 bindkey -v
 # enable CTRL-R history lookup
 bindkey '^R' history-incremental-search-backward
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"

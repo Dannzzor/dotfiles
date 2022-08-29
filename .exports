@@ -1,6 +1,7 @@
 # vim as default
 export VISUAL="nvim"
 export EDITOR="$VISUAL"
+#export BROWSER="chrome" # this breaks git-open, but if you want firefox, then it works :shrug:
 
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"

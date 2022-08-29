@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Pretty columns for csv files / output
+# source: https://www.stefaanlippens.net/pretty-csv.html
+function pretty_csv {
+    perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
+}
+
 # Create a new directory and enter it
 function md() {
 	mkdir -p "$@" && cd "$@"
