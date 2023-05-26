@@ -26,6 +26,8 @@
   # View the current working tree status using the short format
   s = status -s
 
+  clear = !git fsck && git gc --prune=now
+
   # Update all submodules
   sub = submodule update --init --recursive
 
