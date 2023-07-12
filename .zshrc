@@ -105,9 +105,6 @@ alias zshconfig="nvim ~/.zshrc"
 
 alias python="/Users/dannzzor/.pyenv/versions/3.11.3/bin/python"
 
-# old habits
-alias nvm="fnm"
-
 # Load my custom stuff from other files
 for file in ~/.{extra,exports,aliases,functions}; do
   [ -r "$file" ] && source "$file"
@@ -116,8 +113,12 @@ unset file
 
 # init homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
-# init FNV ( node version manager )
-eval "$(fnm env --use-on-cd)"
+## Bash complete
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
