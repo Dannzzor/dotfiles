@@ -3,6 +3,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Add pip location to path
+export PATH=$HOME/Library/Python/3.9/bin:$PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -106,7 +109,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias python="/Users/dannzzor/.pyenv/versions/3.11.3/bin/python"
 
 # Load my custom stuff from other files
-for file in ~/.{extra,exports,aliases,functions}; do
+for file in ~/.{extra,exports,aliases,functions,secrets}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
