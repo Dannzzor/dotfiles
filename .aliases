@@ -33,6 +33,8 @@ alias ci='code-insiders'
 alias ctags="`brew --prefix`/bin/ctags"
 alias devmux="sh ~/repos/dotfiles/dev-tmux.sh"
 alias tm="tmux a -t"
+alias mp="multipass"
+alias mpa="multipass shell andromeda"
 
 # first install silver searcher: brew install the_silver_searcher
 # this just defaults it to follow symlinks and also search hidden files
