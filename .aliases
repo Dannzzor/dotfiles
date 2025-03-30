@@ -37,6 +37,7 @@ alias gcsn="git checkout -b SCP-"
 alias devmux="sh ~/repos/dotfiles/dev-tmux.sh"
 alias tm="tmux a -t"
 alias YOLO="git push -f"
+alias tf="terraform"
 
 # first install silver searcher: brew install the_silver_searcher
 # this just defaults it to follow symlinks and also search hidden files
