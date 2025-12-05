@@ -1,5 +1,14 @@
 # Kiro CLI pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
+ZSH_DISABLE_COMPFIX=true;
+
+# temp updating path here, need to move over my .extra file from old mac
+export PATH=~/.config/nvim/bin:$PATH
+export PATH=~/.mongo/mongodb/bin:$PATH
+export PATH=~/.local/bin:$PATH
+export PATH=~/.fig/bin:$PATH
+#export PATH=~/.mongo/mongodb/bin:$PATH
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -107,6 +116,13 @@ alias zshconfig="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+# Load pyenv for loading alternate versions of python
+#export PYENV_ROOT="$HOME"/.pyenv
+#export PATH="$PYENV_ROOT"/bin:"$PATH"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init --path)"
+
 # Load my custom stuff from other files
 for file in ~/.{extra,exports,aliases,functions,secrets}; do
   [ -r "$file" ] && source "$file"
@@ -125,6 +141,20 @@ export NVM_DIR="$HOME/.nvm"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+
+# Hook in direnv
+# https://direnv.net/docs/installation.html
+# brew install direnv
+eval "$(direnv hook zsh)"
+
+# vim bindings
+bindkey -v
+# enable CTRL-R history lookup
+bindkey '^R' history-incremental-search-backward
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
 
 [[ -f "$HOME/fig-export/dotfiles/dotfile.zsh" ]] && builtin source "$HOME/fig-export/dotfiles/dotfile.zsh"
