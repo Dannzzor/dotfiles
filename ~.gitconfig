@@ -2,9 +2,6 @@
   # Undo the last commit (without losing work)
   undo = reset HEAD~1
 
-  # Undo a `git push`
-  undopush= push -f origin HEAD^:master
-
   # Add all changes, interactively
   a = add -p
 
@@ -34,9 +31,6 @@
   # Update all submodules
   sub = submodule update --init --recursive
 
-  # Update submoule to lates, and merge in changes
-  submerge = submodule update --remote --merge
-
   # Switch to a branch, creating it if necessary
   go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
@@ -64,6 +58,12 @@
   # Cherry pick
   cp = cherry-pick 
 
+  # Update all submodules
+  sub = submodule update --init --recursive
+
+  # Switch to a branch, creating it if necessary
+  go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
   # Show verbose output about tags, branches or remotes
   tags = tag -l
   branches = branch -a
@@ -80,6 +80,9 @@
 
   # Find branches containing commit
   fb = "!f() { git branch -a --contains $1; }; f"
+
+  # Update all submodules
+  sub = "submodule update --recursive --init"
 
   # Find tags containing commit
   ft = "!f() { git describe --always --contains $1; }; f"
@@ -104,6 +107,19 @@
 
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
+
+  # Merge GitHub pull request on top of the `master` branch
+  mpr = "!f() { \
+      if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
+          git fetch origin refs/pull/$1/head:pr/$1 && \
+          git rebase master pr/$1 && \
+          git checkout master && \
+          git merge pr/$1 && \
+          git branch -D pr/$1 && \
+          git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
+      fi \
+  }; f"
+
 
 [apply]
 
@@ -210,7 +226,7 @@
 [user]
 
 	name = Danny Davenport
-	email = ddavenport@futurecapital.com
+	email = ddavenport420@gmail.com
 
 
 
