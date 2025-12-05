@@ -22,7 +22,6 @@ Plugin 'othree/csscomplete.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'rstacruz/vim-closer'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'mhartington/nvim-typescript'
 Plugin 'w0rp/ale'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -41,6 +40,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " plugin junkyard =============================
+"Plugin 'mhartington/nvim-typescript' "depricated for neovim 0.5 and LSP
 "Plugin 'chrisbra/Colorizer'
 "Plugin 'gorodinskiy/vim-coloresque.git'
 "Plugin 'ap/vim-css-color'
