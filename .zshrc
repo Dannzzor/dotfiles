@@ -6,7 +6,6 @@ ZSH_DISABLE_COMPFIX=true;
 export PATH=~/.config/nvim/bin:$PATH
 export PATH=~/.mongo/mongodb/bin:$PATH
 export PATH=~/.local/bin:$PATH
-export PATH=~/.fig/bin:$PATH
 #export PATH=~/.mongo/mongodb/bin:$PATH
 
 # If you come from bash you might have to change your $PATH.
@@ -155,9 +154,6 @@ bindkey '^R' history-incremental-search-backward
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-
-[[ -f "$HOME/fig-export/dotfiles/dotfile.zsh" ]] && builtin source "$HOME/fig-export/dotfiles/dotfile.zsh"
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
