@@ -32,8 +32,15 @@ ai/
 │   └── CLAUDE.md                   Claude Code behavioral rules
 ├── cursor/
 │   └── .cursorrules                Cursor in-editor AI rules
-└── copilot/
-    └── copilot-instructions.md     GitHub Copilot inline rules
+├── copilot/
+│   └── copilot-instructions.md     GitHub Copilot inline rules
+└── skills/                         Reusable Claude Code skills
+    ├── README.md                   Skills registry & management
+    ├── skills-sync.sh              Sync skills to ~/.claude/skills/
+    ├── code-structure/
+    │   └── SKILL.md                Service layer architecture guidance
+    └── project-kickoff/
+        └── SKILL.md                New project scaffolding
 ```
 
 ## What Gets Symlinked
@@ -45,6 +52,55 @@ When `install_dotfiles.sh` runs, it creates these links:
 | `~/.claude/CLAUDE.md` | `ai/claude/CLAUDE.md` |
 | `~/.cursorrules` | `ai/cursor/.cursorrules` |
 | `~/.config/github-copilot/instructions.md` | `ai/copilot/copilot-instructions.md` |
+
+## Managing Claude Code Skills
+
+Custom skills provide reusable guidance for specific workflows. Skills are centralized in `ai/skills/` and synced to `~/.claude/skills/`.
+
+### Active Skills
+
+- **code-structure** — Architecture guidance for service layers and refactoring
+- **project-kickoff** — Scaffolding templates for new projects
+
+### Using a Skill
+
+Mention the skill in your prompt:
+
+```
+"Help me refactor this using the code-structure skill"
+"Use the project-kickoff skill to start a new React app"
+```
+
+### Syncing Skills
+
+Skills are automatically tracked in git. When you pull changes:
+
+```bash
+~/repos/dotfiles/ai/skills-sync.sh sync
+```
+
+Or set up once on a new machine:
+
+```bash
+~/repos/dotfiles/ai/skills-sync.sh install
+```
+
+Check sync status:
+
+```bash
+~/repos/dotfiles/ai/skills-sync.sh status
+```
+
+### Creating a New Skill
+
+1. Create the directory: `mkdir -p ai/skills/{skill-name}`
+2. Write `ai/skills/{skill-name}/SKILL.md` with guidance
+3. Sync: `~/repos/dotfiles/ai/skills-sync.sh sync`
+4. Commit: `git add ai/skills/ && git commit -m "add: {skill-name} skill"`
+
+See `ai/skills/README.md` for the full skill template and best practices.
+
+---
 
 ## Updating Configurations
 
