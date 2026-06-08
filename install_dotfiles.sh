@@ -31,3 +31,13 @@ ln -i ~/repos/dotfiles/.eslintrc.json ~/.eslintrc.json
 
 # create the "extra" file that contains secrets that SHOULD NOT BE COMMITTED
 touch ~/.extra
+
+# AI Agent Configs
+# These centralize rules and conventions for Claude Code, Cursor, and GitHub Copilot
+# See ~/repos/dotfiles/ai/STANDARDS.md for the source of truth
+
+mkdir -p ~/.config/github-copilot
+
+ln -s ~/repos/dotfiles/ai/claude/CLAUDE.md ~/.claude/CLAUDE.md
+ln -s ~/repos/dotfiles/ai/cursor/.cursorrules ~/.cursorrules
+ln -s ~/repos/dotfiles/ai/copilot/copilot-instructions.md ~/.config/github-copilot/instructions.md
