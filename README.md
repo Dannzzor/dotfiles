@@ -205,17 +205,25 @@ Configure Neovim after bootstrap:
 bash ~/repos/dotfiles/nvim_settings_install.sh
 ```
 
-## Manual Secrets
+## Machine-Specific Secrets & Config
 
-Create `~/.extra` for machine-specific secrets that shouldn't be committed:
+Create `~/.extra` for secrets and machine-specific config that shouldn't be committed:
 
 ```bash
 # Example ~/.extra (NOT committed to repo):
 export GITHUB_TOKEN="your_token_here"
 export AWS_PROFILE="default"
+export API_KEY="your_key_here"
 ```
 
 This file is sourced by `.zshrc` automatically.
+
+Also set your git identity:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
 
 ## Troubleshooting
 
