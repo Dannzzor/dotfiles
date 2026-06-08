@@ -1,36 +1,43 @@
 #!/bin/bash
 
-# you may need to make this executable with:
-# chmod u+x install_dotfiles.sh
+# Install dotfiles symlinks for existing setup
+# Use this if you already have Homebrew, nvm, and packages installed
+# For fresh machine setup, use: ./bootstrap.sh
 
-# then to run, use:
-# ./install_dotfiles.sh
+set -e
 
-#mkdir -p ~/.config/nvim/lua/custom/plugins
-#ln -i ~/repos/dotfiles/nvim/kickstart_nvim/init.lua ~/.config/nvim/lua/custom/plugins/init.lua
+echo "Installing dotfile symlinks..."
+echo ""
 
 # backup current zshrc
-mv ~/.zshrc ~/.zshrc_old
+if [ -f ~/.zshrc ]; then
+  echo "Backing up existing ~/.zshrc to ~/.zshrc_old"
+  mv ~/.zshrc ~/.zshrc_old
+fi
 
-# install zshrc
-ln -i ~/repos/dotfiles/.zshrc ~/.zshrc
+# Shell configs
+ln -is ~/repos/dotfiles/.zshrc ~/.zshrc
+ln -is ~/repos/dotfiles/.exports ~/.exports
+ln -is ~/repos/dotfiles/.aliases ~/.aliases
+ln -is ~/repos/dotfiles/.functions ~/.functions
 
-# link custom dotfiles
-ln -i ~/repos/dotfiles/.exports ~/.exports
-ln -i ~/repos/dotfiles/.aliases ~/.aliases
-ln -i ~/repos/dotfiles/.functions ~/.functions
+# Git configs
+ln -is ~/repos/dotfiles/.gitconfig ~/.gitconfig
+ln -is ~/repos/dotfiles/.gitignore ~/.gitignore
+ln -is ~/repos/dotfiles/.git_commit_msg.txt ~/.git_commit_msg.txt
 
-ln -i ~/repos/dotfiles/.gitconfig ~/.gitconfig
-ln -i ~/repos/dotfiles/.gitignore ~/.gitignore
-ln -i ~/repos/dotfiles/.inputrc ~/.inputrc
-ln -i ~/repos/dotfiles/.npmrc ~/.npmrc
-ln -i ~/repos/dotfiles/.tmux.conf ~/.tmux.conf
-ln -i ~/repos/dotfiles/.tmux_colors ~/.tmux_colors
-ln -i ~/repos/dotfiles/.dircolors ~/.dircolors
-ln -i ~/repos/dotfiles/.eslintrc.json ~/.eslintrc.json
+# Editor configs
+ln -is ~/repos/dotfiles/.inputrc ~/.inputrc
+ln -is ~/repos/dotfiles/.npmrc ~/.npmrc
+ln -is ~/repos/dotfiles/.vimrc ~/.vimrc
 
-# create the "extra" file that contains secrets that SHOULD NOT BE COMMITTED
-touch ~/.extra
+# Tmux configs
+ln -is ~/repos/dotfiles/.tmux.conf ~/.tmux.conf
+ln -is ~/repos/dotfiles/.tmux_colors ~/.tmux_colors
+
+# Misc configs
+ln -is ~/repos/dotfiles/.dircolors ~/.dircolors
+ln -is ~/repos/dotfiles/.eslintrc.json ~/.eslintrc.json
 
 # AI Agent Configs
 # These centralize rules and conventions for Claude Code, Cursor, and GitHub Copilot
@@ -38,6 +45,16 @@ touch ~/.extra
 
 mkdir -p ~/.config/github-copilot
 
-ln -s ~/repos/dotfiles/ai/claude/CLAUDE.md ~/.claude/CLAUDE.md
-ln -s ~/repos/dotfiles/ai/cursor/.cursorrules ~/.cursorrules
-ln -s ~/repos/dotfiles/ai/copilot/copilot-instructions.md ~/.config/github-copilot/instructions.md
+ln -is ~/repos/dotfiles/ai/claude/CLAUDE.md ~/.claude/CLAUDE.md
+ln -is ~/repos/dotfiles/ai/cursor/.cursorrules ~/.cursorrules
+ln -is ~/repos/dotfiles/ai/copilot/copilot-instructions.md ~/.config/github-copilot/instructions.md
+
+# create the "extra" file that contains secrets that SHOULD NOT BE COMMITTED
+touch ~/.extra
+
+echo ""
+echo "✅ Dotfile symlinks created"
+echo ""
+echo "Next steps:"
+echo "  1. Open a new terminal to reload shell config"
+echo "  2. Update git config template: git config --global commit.template ~/.git_commit_msg.txt"
