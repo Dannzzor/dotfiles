@@ -1,9 +1,17 @@
-
 # Kiro CLI pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
+ZSH_DISABLE_COMPFIX=true;
+
+# temp updating path here, need to move over my .extra file from old mac
+export PATH=~/.config/nvim/bin:$PATH
+export PATH=~/.mongo/mongodb/bin:$PATH
+export PATH=~/.local/bin:$PATH
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Add pip location to path
+export PATH=$HOME/Library/Python/3.9/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -105,26 +113,39 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias python="/Users/dannzzor/.pyenv/versions/3.11.3/bin/python"
 
-# old habits
-alias nvm="fnm"
+# Load pyenv for loading alternate versions of python
+#export PYENV_ROOT="$HOME"/.pyenv
+#export PATH="$PYENV_ROOT"/bin:"$PATH"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init --path)"
 
 # Load my custom stuff from other files
-for file in ~/.{extra,exports,aliases,functions}; do
+for file in ~/.{extra,exports,aliases,functions,secrets}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
 
 # init homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
-# init FNV ( node version manager )
+# init FNM (fast node version manager)
 eval "$(fnm env --use-on-cd)"
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+
+# Hook in direnv
+# https://direnv.net/docs/installation.html
+# brew install direnv
+eval "$(direnv hook zsh)"
+
+# vim bindings
+bindkey -v
+# enable CTRL-R history lookup
+bindkey '^R' history-incremental-search-backward
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"

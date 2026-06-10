@@ -33,3 +33,8 @@ fish/fish_history
 # random
 shilocation
 wallaby.js
+
+# ignore logs and command history
+*.log
+history
+**/.claude/settings.local.json
