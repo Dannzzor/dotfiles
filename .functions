@@ -6,6 +6,14 @@ function pretty_csv {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
 }
 
+# How to find where an alias was defined:
+function findAlias() {
+# ZSH flavor
+  zsh -ixc : 2>&1 | grep "$@"
+# BASH flavor
+# bash -ixlc : 2>&1 | grep "$@"
+}
+
 # Create a new directory and enter it
 function md() {
 	mkdir -p "$@" && cd "$@"
