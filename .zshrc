@@ -137,10 +137,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 
-# Hook in direnv
+# Hook in direnv (install with: brew install direnv)
 # https://direnv.net/docs/installation.html
-# brew install direnv
-eval "$(direnv hook zsh)"
+command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 
 # vim bindings
 bindkey -v
