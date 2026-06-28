@@ -2,18 +2,7 @@
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 ZSH_DISABLE_COMPFIX=true;
 
-# temp updating path here, need to move over my .extra file from old mac
-export PATH=~/.config/nvim/bin:$PATH
-export PATH=~/.mongo/mongodb/bin:$PATH
-export PATH=~/.local/bin:$PATH
-export PATH=~/.fig/bin:$PATH
-#export PATH=~/.mongo/mongodb/bin:$PATH
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Add pip location to path
-export PATH=$HOME/Library/Python/3.9/bin:$PATH
+# Machine-local PATH and overrides live in ~/.extra (not committed)
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -119,9 +108,7 @@ alias zshconfig="nvim ~/.zshrc"
 # Load pyenv for loading alternate versions of python
 #export PYENV_ROOT="$HOME"/.pyenv
 #export PATH="$PYENV_ROOT"/bin:"$PATH"
-#eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
-eval "$(pyenv init --path)"
 
 # Load my custom stuff from other files
 for file in ~/.{extra,exports,aliases,functions,secrets}; do
@@ -131,12 +118,9 @@ unset file
 
 # init homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
-## Bash complete
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
@@ -161,3 +145,15 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+# bun completions
+[ -s "/Users/danny/.bun/_bun" ] && source "/Users/danny/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/danny/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/danny/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/danny/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/danny/google-cloud-sdk/completion.zsh.inc'; fi
