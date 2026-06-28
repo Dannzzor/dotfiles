@@ -1,0 +1,43 @@
+# Cursor Rules
+
+Behavioral guidelines for Cursor in-editor AI assistant.
+
+## Reference
+
+See `../STANDARDS.md` for agent-wide standards. This file extends those rules for Cursor specifically.
+
+## Cursor-Specific Guidelines
+
+### Code Completion & Suggestions
+
+- **Idiomatic code**: Suggest patterns native to the language, not library-specific tricks
+- **Context matters**: Use surrounding code style and naming conventions
+- **Performance**: Suggest efficient approaches; avoid premature optimization
+- **Types**: Prefer strongly-typed implementations where language supports it
+
+### In-Editor Workflows
+
+- **Quick fixes**: Use for one-off refactors, linting fixes, and local improvements
+- **Complex changes**: Fall back to Claude Code via `Ctrl+K` for multi-file changes
+- **Testing**: Suggest test patterns; pair suggestions with test coverage
+- **Documentation**: Keep docstrings short; one line when possible
+
+### Code Review Mode
+
+- **Catch issues early**: Flag security holes, off-by-one errors, edge cases
+- **Avoid noise**: Skip stylistic preferences unless they impact readability
+- **Suggest alternatives**: Offer better patterns without enforcing single approach
+- **Respect context**: Consider the broader codebase conventions
+
+### Debugging Assistance
+
+- **Hypothesis first**: Ask what the expected behavior is before suggesting fixes
+- **Root cause**: Trace back to the real issue, not just the symptom
+- **Minimal changes**: Fix the bug; don't refactor while debugging
+- **Testing**: Verify fix with a test case or reproduction
+
+---
+
+**Last Updated**: 2026-06-08
+
+Synced from: `../STANDARDS.md`

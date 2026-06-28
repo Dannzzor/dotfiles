@@ -225,7 +225,7 @@
 				<real>0.1315002990886569</real>
 			</dict>
 			<key>Background Image Location</key>
-			<string>/Users/danny/Desktop/tacos/106122810_1043924642739458_5313301023249628235_n.jpg</string>
+			<string></string>
 			<key>Background Image Mode</key>
 			<integer>2</integer>
 			<key>Blend</key>
@@ -722,7 +722,7 @@
 			<key>Window Type</key>
 			<integer>0</integer>
 			<key>Working Directory</key>
-			<string>/Users/ddavenport</string>
+			<string>~</string>
 		</dict>
 		<dict>
 			<key>ASCII Anti Aliased</key>
@@ -1365,7 +1365,7 @@
 			<key>Window Type</key>
 			<integer>2</integer>
 			<key>Working Directory</key>
-			<string>/Users/ddavenport</string>
+			<string>~</string>
 		</dict>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
