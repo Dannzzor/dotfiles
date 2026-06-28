@@ -99,42 +99,25 @@ What NOT to do.
 
 ### Step 3: Sync to Claude Code
 
-Copy the skill to `~/.claude/skills/`:
+Symlink the new skill into `~/.claude/skills/`:
 
 ```bash
-mkdir -p ~/.claude/skills/{skill-name}
-cp ~/repos/dotfiles/ai/skills/{skill-name}/SKILL.md ~/.claude/skills/{skill-name}/SKILL.md
-```
-
-Or use the sync script:
-
-```bash
-~/repos/dotfiles/ai/skills-sync.sh
+~/repos/dotfiles/ai/sync-claude.sh
 ```
 
 ---
 
 ## Sync to Claude Code
 
-All skills in this directory should be symlinked or copied to `~/.claude/skills/` so Claude Code can use them.
+Skills in this directory are symlinked into `~/.claude/skills/` by `sync-claude.sh`, so Claude Code can use them.
 
-**One-time setup** (on new machine):
-
-```bash
-bash ~/repos/dotfiles/ai/skills-sync.sh install
-```
-
-**Update existing skills** (after editing):
+**One-time setup** (on a new machine), after pulling the repo:
 
 ```bash
-bash ~/repos/dotfiles/ai/skills-sync.sh sync
+~/repos/dotfiles/ai/sync-claude.sh
 ```
 
-**Check status**:
-
-```bash
-bash ~/repos/dotfiles/ai/skills-sync.sh status
-```
+**After adding a new skill**, re-run the same script to create its symlink. **Editing an existing skill** needs nothing extra — it's a symlink into the repo, so a `git pull` makes the change live immediately.
 
 ---
 
@@ -175,9 +158,8 @@ bash ~/repos/dotfiles/ai/skills-sync.sh status
 
 ### Updating a Skill
 
-1. Edit the `.md` file in `~/repos/dotfiles/ai/skills/{skill-name}/`
-2. Run `~/repos/dotfiles/ai/skills-sync.sh sync` to update `~/.claude/skills/`
-3. Commit changes: `git add ai/skills/ && git commit -m "update: {skill-name}"`
+1. Edit the `.md` file in `~/repos/dotfiles/ai/skills/{skill-name}/` (the live `~/.claude/skills/{skill-name}` is a symlink, so the edit is immediate)
+2. Commit changes: `git add ai/skills/ && git commit -m "update: {skill-name}"`
 
 ### Retiring a Skill
 

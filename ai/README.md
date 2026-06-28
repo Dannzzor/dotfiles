@@ -27,16 +27,17 @@ All tool-specific configs reference this file. After updating, run the sync chec
 ai/
 ├── STANDARDS.md                    Central rules for all AI agents
 ├── sync-check.sh                   Checks for stale tool configs
+├── sync-claude.sh                  Symlinks Claude config into ~/.claude
 ├── README.md                       This file
 ├── claude/
-│   └── CLAUDE.md                   Claude Code behavioral rules
+│   ├── CLAUDE.md                   Claude Code global working rules
+│   └── commands/                   Custom slash commands
 ├── cursor/
 │   └── .cursorrules                Cursor in-editor AI rules
 ├── copilot/
 │   └── copilot-instructions.md     GitHub Copilot inline rules
 └── skills/                         Reusable Claude Code skills
     ├── README.md                   Skills registry & management
-    ├── skills-sync.sh              Sync skills to ~/.claude/skills/
     ├── code-structure/
     │   └── SKILL.md                Service layer architecture guidance
     └── project-kickoff/
@@ -45,17 +46,23 @@ ai/
 
 ## What Gets Symlinked
 
-When `install_dotfiles.sh` runs, it creates these links:
+Run `./ai/sync-claude.sh` (idempotent; backs up existing real files to `*.bak`) to create these links:
 
 | Home Location | Repository Location |
 |---|---|
 | `~/.claude/CLAUDE.md` | `ai/claude/CLAUDE.md` |
-| `~/.cursorrules` | `ai/cursor/.cursorrules` |
-| `~/.config/github-copilot/instructions.md` | `ai/copilot/copilot-instructions.md` |
+| `~/.claude/commands` | `ai/claude/commands/` |
+| `~/.claude/skills/<name>` | `ai/skills/<name>` (per skill) |
+
+Because these are symlinks, an edit on any machine is just a file change in this repo: `git push`, then `git pull` on the other machine and it's live immediately (no re-sync step).
+
+Deliberately **not** synced: `~/.claude/projects/` (project history + memory — work and personal stay separate), `settings.json`, plugins, and marketplace-installed skills (`find-skills`, `skill-creator`, which reinstall via the marketplace).
+
+The Cursor and Copilot configs above are handled separately by `install_dotfiles.sh` / `bootstrap.sh`.
 
 ## Managing Claude Code Skills
 
-Custom skills provide reusable guidance for specific workflows. Skills are centralized in `ai/skills/` and synced to `~/.claude/skills/`.
+Custom skills provide reusable guidance for specific workflows. Skills live in `ai/skills/` and are symlinked into `~/.claude/skills/` by `sync-claude.sh`.
 
 ### Active Skills
 
@@ -71,32 +78,14 @@ Mention the skill in your prompt:
 "Use the project-kickoff skill to start a new React app"
 ```
 
-### Syncing Skills
-
-Skills are automatically tracked in git. When you pull changes:
-
-```bash
-~/repos/dotfiles/ai/skills-sync.sh sync
-```
-
-Or set up once on a new machine:
-
-```bash
-~/repos/dotfiles/ai/skills-sync.sh install
-```
-
-Check sync status:
-
-```bash
-~/repos/dotfiles/ai/skills-sync.sh status
-```
-
 ### Creating a New Skill
 
 1. Create the directory: `mkdir -p ai/skills/{skill-name}`
 2. Write `ai/skills/{skill-name}/SKILL.md` with guidance
-3. Sync: `~/repos/dotfiles/ai/skills-sync.sh sync`
+3. Run `./ai/sync-claude.sh` to symlink it into `~/.claude/skills/`
 4. Commit: `git add ai/skills/ && git commit -m "add: {skill-name} skill"`
+
+On machines where the skill already exists, a `git pull` is enough — the symlink picks it up automatically.
 
 See `ai/skills/README.md` for the full skill template and best practices.
 
