@@ -32,6 +32,10 @@ alias cask='brew cask'
 alias ci='code-insiders'
 alias ctags="`brew --prefix`/bin/ctags"
 
+# Agent stuff
+alias cc="claude"
+alias cca="claude agents"
+
 # tmux session creators
 alias devmux="tmux new -s 'dev' -d && tmux split-window -v -p 10 && tmux split-window -h -p 60 && tmux split-window -h -p 30 && tmux a -t 'dev'"
 alias hackmux="tmux new -s 'hack' -d 'vim' && tmux split-window -v -p 10 && tmux split-window -h -p 30 -d 'htop' && tmux a -t 'hack'"
